@@ -18,11 +18,26 @@ const pricingPlans = [
   cta: "Request Quote"
 },
 
+ 
   {
-  name: "Yearly Rental",
-  description: "Best value for long-term operations",
+  name: "Project Based",
+  description: "Custom-built solutions for large projects",
   highlight: true,
   badge: "Most Popular",
+  features: [
+    "Custom duration",
+    "Fleet customization",
+    "Dedicated project manager",
+    "Full logistics support",
+    "Advanced reporting",
+    "Dedicated account team"
+  ],
+  cta: "Discuss Project"
+},
+ {
+  name: "Yearly Rental",
+  description: "Best value for long-term operations",
+  highlight: false,
   features: [
     "12-month contract",
     "Priority vehicle allocation",
@@ -33,21 +48,7 @@ const pricingPlans = [
   ],
   cta: "Request Quote"
 }
-,
-  {
-  name: "Project Based",
-  description: "Custom-built solutions for large projects",
-  highlight: false,
-  features: [
-    "Custom duration",
-    "Fleet customization",
-    "Dedicated project manager",
-    "Full logistics support",
-    "Advanced reporting",
-    "Dedicated account team"
-  ],
-  cta: "Discuss Project"
-}
+
 
 ];
 

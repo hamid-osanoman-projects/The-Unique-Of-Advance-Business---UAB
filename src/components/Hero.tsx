@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Globe, ShieldCheck, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import CountUpNumber from "./animations/CountUpNumber";
+import { Link } from "react-router-dom";
+
 
 const Hero = () => {
   return (
@@ -46,15 +48,29 @@ const Hero = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
-                <Button size="lg" className="bg-[#F59F0A] hover:bg-[#d98c08] text-white px-8 h-14 sm:h-16 rounded-none font-bold group transition-all text-sm sm:text-base">
-                  REQUEST A QUOTE <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[#F59F0A] hover:bg-[#d98c08] text-white px-8 h-14 sm:h-16 rounded-none font-bold group transition-all text-sm sm:text-base"
+                >
+                  <Link to="/contact">
+                    REQUEST A QUOTE
+                    <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                  </Link>
                 </Button>
-                <button className="flex items-center justify-center gap-4 text-white hover:text-[#F59F0A] transition-colors group py-2">
+
+                <Link
+                  to="/fleet"
+                  className="flex items-center justify-center gap-4 text-white hover:text-[#F59F0A] transition-colors group py-2"
+                >
                   <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#F59F0A]">
                     <Play className="fill-white group-hover:fill-[#F59F0A] w-3 h-3 sm:w-4 sm:h-4" />
                   </div>
-                  <span className="font-bold text-[10px] sm:text-xs tracking-widest uppercase">Watch Our Fleet</span>
-                </button>
+                  <span className="font-bold text-[10px] sm:text-xs tracking-widest uppercase">
+                    Watch Our Fleet
+                  </span>
+                </Link>
+
               </div>
             </motion.div>
           </div>
