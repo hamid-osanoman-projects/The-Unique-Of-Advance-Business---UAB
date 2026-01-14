@@ -4,48 +4,51 @@ import { Button } from "@/components/ui/button";
 const pricingPlans = [
   
   {
-    name: "Monthly Contract",
-    description: "Best value for ongoing needs",
-    highlight: false,
-    features: [
-      "30-day commitment",
-      "Priority vehicle allocation",
-      "Dedicated drivers",
-      "Fuel management options",
-      "Real-time GPS tracking",
-      "24/7 priority support"
-    ],
-    cta: "Request Quote"
-  },
+  name: "Monthly Contract",
+  description: "Flexible short-term rental",
+  highlight: false,
+  features: [
+    "30-day rolling contract",
+    "Wide vehicle availability",
+    "Dedicated drivers",
+    "Fuel management options",
+    "GPS tracking",
+    "Standard support"
+  ],
+  cta: "Request Quote"
+},
+
   {
-    name: "Yearly Rental",
-    description: "Perfect for long-term projects",
-    highlight: true,
-    badge: "Most Popular",
-    features: [
-      "Flexible 1-day minimum",
-      "All vehicle types available",
-      "Dedicated drivers",
-      "Fuel management options",
-      "Basic GPS tracking",
-      "Standard support"
-    ],
-    cta: "Request Quote"
-  },
+  name: "Yearly Rental",
+  description: "Best value for long-term operations",
+  highlight: true,
+  badge: "Most Popular",
+  features: [
+    "12-month contract",
+    "Priority vehicle allocation",
+    "Dedicated drivers",
+    "Fuel management options",
+    "Advanced GPS tracking",
+    "24/7 priority support"
+  ],
+  cta: "Request Quote"
+}
+,
   {
-    name: "Project Based",
-    description: "Tailored for large projects",
-    highlight: false,
-    features: [
-      "Custom duration",
-      "Fleet customization",
-      "Project manager assigned",
-      "Full logistics support",
-      "Advanced reporting",
-      "Dedicated account team"
-    ],
-    cta: "Discuss Project"
-  }
+  name: "Project Based",
+  description: "Custom-built solutions for large projects",
+  highlight: false,
+  features: [
+    "Custom duration",
+    "Fleet customization",
+    "Dedicated project manager",
+    "Full logistics support",
+    "Advanced reporting",
+    "Dedicated account team"
+  ],
+  cta: "Discuss Project"
+}
+
 ];
 
 const PricingSection = () => {
