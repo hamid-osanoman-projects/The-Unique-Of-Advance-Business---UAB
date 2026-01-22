@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import uabWhite from "../assets/uabwhite.png"
+import uabBlue from "../assets/uabblue.png"
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -52,37 +54,32 @@ const Header = () => {
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
           
          {/* Logo */}
-<Link to="/" className="flex items-center gap-0 sm:gap-1 group"> {/* Reduced gap to 0 or 1 */}
+<Link to="/" className="flex items-center gap-0 sm:gap-1 group">
   <motion.div 
-    /* Changed width from w-32 to w-auto or a smaller fixed width to remove empty space */
     className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 flex items-center justify-center" 
     whileHover={{ scale: 1.05 }}
     transition={{ duration: 0.3 }}
   >
-    {/* Dynamic Logo Image */}
     <img 
-      src={showTransparent ? "/src/assets/uabwhite.png" : "/src/assets/uabblue.png"} 
+      /* Use the imported variables here */
+      src={showTransparent ? uabWhite : uabBlue} 
       alt="UAB Logo"
-      /* Added object-left to ensure the logo touches the left side of the container */
       className="w-full h-full object-contain object-left" 
     />
   </motion.div>
 
   <div className="hidden xs:block sm:block ml-[-4px] lg:ml-[-8px]">
-  {/* Main Title - Applied font-archivo */}
-  <p className={`font-archivo font-bold text-sm sm:text-base lg:text-lg leading-tight transition-colors uppercase ${
-    showTransparent ? 'text-white' : 'text-[#0B1231]'
-  }`}>
-    The Unique Of Advance Business
-  </p>
-  
-  {/* Subtitle - Also using font-archivo for brand consistency */}
-  <p className={`font-archivo text-[10px] sm:text-xs tracking-wider uppercase transition-colors ${
-    showTransparent ? 'text-white/70' : 'text-[#0B1231]/60'
-  }`}>
-    Transport & Equipment Solutions
-  </p>
-</div>
+    <p className={`font-archivo font-bold text-sm sm:text-base lg:text-lg leading-tight transition-colors uppercase ${
+      showTransparent ? 'text-white' : 'text-[#0B1231]'
+    }`}>
+      The Unique Of Advance Business
+    </p>
+    <p className={`font-archivo text-[10px] sm:text-xs tracking-wider uppercase transition-colors ${
+      showTransparent ? 'text-white/70' : 'text-[#0B1231]/60'
+    }`}>
+      Transport & Equipment Solutions
+    </p>
+  </div>
 </Link>
 
           {/* Desktop Navigation */}
