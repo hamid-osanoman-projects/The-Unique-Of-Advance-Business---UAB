@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     question: "What types of vehicles are in your fleet?",
-    answer: "Our fleet includes Luxury Buses (Toyota Coaster, Rosa), Heavy Duty Excavators (CAT, Liebherr), Water Tankers, Agricultural Tractors, Equipment Vans, and Dump Trucks (MAN, Fuso).",
+    answer: "Our fleet includes Luxury Buses (Toyota Coaster, Rosa), Heavy Duty Excavators (CAT, Liebherr), Water Tankers, Equipment Vans, and Dump Trucks (MAN, Fuso).",
   },
 ];
 
@@ -196,7 +196,7 @@ const AboutFAQ = () => {
               {/* Trust indicator */}
               <div className="mt-10 pt-8 border-t border-white/10">
                 <div className="flex items-center gap-4">
-                  <span className="text-3xl font-black font-bold text-[#F59F0A]">500+</span>
+                  <span className="text-3xl font-black font-bold text-[#F59F0A]">100+</span>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500 leading-tight">
                     Satisfied Corporate <br /> Partners in Oman
                   </div>

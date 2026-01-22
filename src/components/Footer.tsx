@@ -6,6 +6,8 @@ import AnimatedSection from "./animations/AnimatedSection";
 import StaggerContainer from "./animations/StaggerContainer";
 import StaggerItem from "./animations/StaggerItem";
 
+// Import logo at the top
+import uabwhite from "../assets/uabwhite.png"
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -21,50 +23,41 @@ const Footer = () => {
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* CTA Banner */}
-      {/* <div className="border-b border-primary-foreground/10 relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <AnimatedSection>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-center md:text-left">
-              <div>
-                <h3 className="text-primary-foreground text-lg sm:text-xl font-bold mb-1">Do You Have Any Questions?</h3>
-                <p className="text-primary-foreground/70 text-sm sm:text-base">Contact us today for a free consultation</p>
-              </div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="accent" size="lg" className="w-full md:w-auto btn-shimmer group">
-                  Contact Us
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </motion.div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </div> */}
-
       {/* Main Footer */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16 relative">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12" staggerDelay={0.1}>
+          
           {/* Company Info */}
           <StaggerItem className="sm:col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-2">
+              {/* Logo Container */}
               <motion.div 
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center shadow-md flex-shrink-0"
-                whileHover={{ scale: 1.1, rotate: 10 }}
+                className="w-24 h-24 sm:w-32 sm:h-32 flex items-center justify-center flex-shrink-0"
+                whileHover={{ scale: 1.05 }}
               >
-                <span className="text-accent-foreground font-bold text-lg sm:text-xl">U</span>
+                <img 
+                  src={uabwhite} 
+                  alt="UAB Logo" 
+                  className="w-full h-full object-contain"
+                />
               </motion.div>
-              <div>
-                <p className="text-primary-foreground font-bold text-base sm:text-lg lg:text-xl">The Unique of Advance Business</p>
-                <p className="text-primary-foreground/60 text-xs sm:text-sm">Transport & Equipment Solutions</p>
-              </div>
+              
+              <div className="ml-[-4px]">
+  {/* Footer Title with Archivo Font */}
+  <p className="font-archivo text-primary-foreground font-bold text-base sm:text-lg lg:text-xl leading-tight uppercase">
+    The Unique of Advance Business
+  </p>
+  
+  {/* Footer Subtitle with Archivo Font */}
+  <p className="font-archivo text-primary-foreground/60 text-[10px] sm:text-xs tracking-wider uppercase mt-1">
+    Transport & Equipment Solutions
+  </p>
+</div>
             </div>
-            <p className="text-primary-foreground/70 max-w-md mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm">
-            The Unique of Advance Business (UAB) delivers professional transportation and equipment rental solutions across Oman. We specialize in industrial staff transport, heavy equipment hire, and logistics management for the construction and corporate sectors. With a proven 14-year track record and a fleet of 40+ vehicles, we ensure your project stays on schedule and within budget.
+
+            <p className="text-primary-foreground/70 max-w-lg mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm">
+              The Unique of Advance Business (UAB) delivers professional transportation and equipment rental solutions across Oman. We specialize in industrial staff transport, heavy equipment hire, and logistics management for the construction and corporate sectors. With a proven 14-year track record and a fleet of 40+ vehicles, we ensure your project stays on schedule.
             </p>
-            {/* <div className="flex items-center gap-2 text-primary-foreground/60">
-              <MapPin className="w-4 h-4 text-accent flex-shrink-0" />
-              <span className="text-xs sm:text-sm">Serving all Governorates of Oman</span>
-            </div> */}
           </StaggerItem>
 
           {/* Quick Links */}
@@ -129,7 +122,11 @@ const Footer = () => {
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                 </div>
-                <span className="text-xs sm:text-sm">P.O Box: 659, Postal Code: 117, Muscat, Sultanate of Oman</span>
+                <span className="text-xs sm:text-sm leading-tight">
+                   Near Al-Maha Petrol Pump,ASAS Service Center Building, 2nd Floor,  Office 21, 
+                  Grand Mosque st  , Muscat, OMAN<br />
+                  
+                </span>
               </li>
             </ul>
           </StaggerItem>
@@ -137,7 +134,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <motion.div 
-          className="mt-4 sm:mt-6 lg:mt-8 pt-4 sm:pt-6 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-center md:text-left"
+          className="mt-4 pt-6 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -146,7 +143,7 @@ const Footer = () => {
           <p className="text-primary-foreground/60 text-xs sm:text-sm">
             © {currentYear} The Unique of Advance Business (UAB). All rights reserved.
           </p>
-          <p className="text-primary-foreground/60 text-xs sm:text-sm">
+          <p className="text-primary-foreground/60 text-xs sm:text-sm italic">
             Transport Company Muscat | Heavy Equipment Rental Oman
           </p>
         </motion.div>

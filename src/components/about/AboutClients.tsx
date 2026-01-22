@@ -27,39 +27,32 @@ import skyline from "../../assets/logos/Skyline-logo.png";
 import zublin from "../../assets/logos/ZUBLIN-STRABAG-LOGO.png";
 
 const clientList = [
-  { name: "GPS", logo: gps },
+  { name: "GPS", logo: gps, isWhite: false },
   { name: "Al Tasnim", logo: alTasnim, isWhite: true },
-  { name: "Al Zarraq", logo: alZarraq },
-  { name: "Anson", logo: anson },
-  // Added flag for white logos
+  { name: "Al Zarraq", logo: alZarraq, isWhite: false },
+  { name: "Anson", logo: anson, isWhite: false },
   { name: "Al Hajry", logo: alHajry, isWhite: true },
-  { name: "Burj Al Shaya", logo: burj },
-  { name: "Galfar", logo: galfar },
-  
-  { name: "GDS", logo: gds }, // Added flag for white logos
-  
-  { name: "Iacovou", logo: iacovou },
-  
-  { name: "IKK Group", logo: ikk },
-  { name: "Kabbani Group", logo: islamkairi , isWhite: true},
-  { name: "Jalmood", logo: jalmood },
-  
-  { name: "Keller", logo: keller },
-  
-  { name: "Acciona", logo: acciona },
+  { name: "Burj Al Shaya", logo: burj, isWhite: false },
+  { name: "Galfar", logo: galfar, isWhite: false },
+  { name: "GDS", logo: gds, isWhite: false },
+  { name: "Iacovou", logo: iacovou, isWhite: false },
+  { name: "IKK Group", logo: ikk, isWhite: false },
+  { name: "Kabbani Group", logo: islamkairi, isWhite: true },
+  { name: "Jalmood", logo: jalmood, isWhite: false },
+  { name: "Keller", logo: keller, isWhite: false },
+  { name: "Acciona", logo: acciona, isWhite: false },
   { name: "Masirah", logo: masirah, isWhite: true },
-  { name: "Moukhtar", logo: moukhtar },
-  { name: "Atlantic", logo: atlantic, isWhite: true }, 
-  { name: "Novotel", logo: novatel },
-  { name: "ONEIC", logo: oneic },
-  
-  { name: "OPI", logo: opi },
+  { name: "Moukhtar", logo: moukhtar, isWhite: false },
+  { name: "Atlantic", logo: atlantic, isWhite: true },
+  { name: "Novotel", logo: novatel, isWhite: false },
+  { name: "ONEIC", logo: oneic, isWhite: false },
+  { name: "OPI", logo: opi, isWhite: false },
   { name: "Skyline", logo: skyline, isWhite: true },
-  { name: "Royal Tech", logo: royaltech },
-  { name: "Ryboa Haima", logo: ryboa },
-  
-  { name: "Zublin Strabag", logo: zublin },
+  { name: "Royal Tech", logo: royaltech, isWhite: false },
+  { name: "Ryboa Haima", logo: ryboa, isWhite: false },
+  { name: "Zublin Strabag", logo: zublin, isWhite: false },
 ];
+
 
 const AboutClients = () => {
   return (
@@ -87,38 +80,36 @@ const AboutClients = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6">
           {clientList.map((client, index) => (
             <motion.div
-              key={client.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.02 }}
-              whileHover={{ 
-                y: -5, 
-                transition: { duration: 0.2 } 
-              }}
-              className={`
-                relative bg-white border border-slate-200 rounded-xl p-4 h-24 flex items-center justify-center 
-                shadow-sm hover:shadow-xl hover:border-accent/30 transition-all duration-300 group cursor-default
-                ${client.isWhite ? 'bg-slate-800' : 'bg-white hover:bg-slate-50'}
-              `}
-            >
-              {/* Overlay for better logo visibility on hover */}
-              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity"></div>
-              
-              <img
-                src={client.logo}
-                alt={client.name}
-                className={`
-                  max-w-full max-h-full object-contain transition-all duration-500
-                  group-hover:scale-110
-                `}
-                style={{ maxHeight: '55px' }} 
-              />
-              
-              {/* Name Badge on Hover */}
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:bottom-2 transition-all duration-300 shadow-lg pointer-events-none whitespace-nowrap z-20">
-                {client.name}
-              </div>
-            </motion.div>
+  key={client.name}
+  initial={{ opacity: 0, scale: 0.9 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ delay: index * 0.02 }}
+  whileHover={{ 
+    y: -5, 
+    transition: { duration: 0.2 } 
+  }}
+  /* 1. Removed 'bg-white' from the main string to prevent conflicts */
+  className={`
+    relative border border-slate-200 rounded-xl p-4 h-24 flex items-center justify-center 
+    shadow-sm hover:shadow-xl hover:border-accent/30 transition-all duration-300 group cursor-default
+    ${client.isWhite ? "bg-slate-900" : "bg-[#F8F8F5] hover:bg-white"}
+  `}
+>
+  {/* Overlay for better logo visibility on hover */}
+  <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity"></div>
+  
+  <img
+    src={client.logo}
+    alt={client.name}
+    className="max-w-full max-h-full object-contain transition-all duration-500 group-hover:scale-110"
+    style={{ maxHeight: '55px' }} 
+  />
+  
+  {/* Name Badge on Hover */}
+  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:bottom-2 transition-all duration-300 shadow-lg pointer-events-none whitespace-nowrap z-20">
+    {client.name}
+  </div>
+</motion.div>
           ))}
         </div>
       </div>

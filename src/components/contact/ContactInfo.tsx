@@ -14,21 +14,22 @@ const ContactInfo = () => {
       icon: Mail,
       label: 'Email Us',
       value: 'abdullah@theuniqueom.com',
-      href: 'mailto:abdullah@uniqueom.com',
+      href: 'mailto:abdullah@theuniqueom.com',
       color: 'bg-accent/10 text-accent',
     },
     {
-      icon: MessageCircle,
-      label: 'WhatsApp',
-      value: '+968 9111 6925',
-      href: 'https://wa.me/96891116925',
-      color: 'bg-green-500/10 text-green-600',
-    },
+  icon: MessageCircle,
+  label: 'WhatsApp',
+  value: '+968 9111 6925',
+  // Professional common message for the contact page
+  href: 'https://api.whatsapp.com/send?phone=96891116925&text=Hello!%20I%20contacted%20you%20via%20your%20website%20and%20would%20like%20to%20get%20more%20information%20about%20your%20services.',
+  color: 'bg-green-500/10 text-green-600',
+},
   ];
 
   const businessHours = [
     { day: 'Sat - Wed', hours: '8:00 AM - 6:00 PM', isOpen: true },
-    { day: 'Thursday', hours: '8:00 AM - 1:00 PM', isOpen: true },
+    { day: 'Thursday', hours: '8:00 AM - 5:00 PM', isOpen: true },
     { day: 'Friday', hours: 'Closed', isOpen: false }
   ];
 

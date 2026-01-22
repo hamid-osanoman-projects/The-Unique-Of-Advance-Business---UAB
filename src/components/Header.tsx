@@ -50,20 +50,40 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
-            <motion.div 
-              className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-primary rounded-lg flex items-center justify-center shadow-md"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="text-primary-foreground font-bold text-base sm:text-lg lg:text-xl">U</span>
-            </motion.div>
-            <div className="hidden xs:block sm:block">
-              <p className={`font-bold text-base sm:text-lg leading-tight transition-colors ${showTransparent ? 'text-primary-foreground' : 'text-foreground'}`}>UAB</p>
-              <p className={`text-[10px] sm:text-xs transition-colors ${showTransparent ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>Transport & Equipment</p>
-            </div>
-          </Link>
+          
+         {/* Logo */}
+<Link to="/" className="flex items-center gap-0 sm:gap-1 group"> {/* Reduced gap to 0 or 1 */}
+  <motion.div 
+    /* Changed width from w-32 to w-auto or a smaller fixed width to remove empty space */
+    className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 flex items-center justify-center" 
+    whileHover={{ scale: 1.05 }}
+    transition={{ duration: 0.3 }}
+  >
+    {/* Dynamic Logo Image */}
+    <img 
+      src={showTransparent ? "/src/assets/uabwhite.png" : "/src/assets/uabblue.png"} 
+      alt="UAB Logo"
+      /* Added object-left to ensure the logo touches the left side of the container */
+      className="w-full h-full object-contain object-left" 
+    />
+  </motion.div>
+
+  <div className="hidden xs:block sm:block ml-[-4px] lg:ml-[-8px]">
+  {/* Main Title - Applied font-archivo */}
+  <p className={`font-archivo font-bold text-sm sm:text-base lg:text-lg leading-tight transition-colors uppercase ${
+    showTransparent ? 'text-white' : 'text-[#0B1231]'
+  }`}>
+    The Unique Of Advance Business
+  </p>
+  
+  {/* Subtitle - Also using font-archivo for brand consistency */}
+  <p className={`font-archivo text-[10px] sm:text-xs tracking-wider uppercase transition-colors ${
+    showTransparent ? 'text-white/70' : 'text-[#0B1231]/60'
+  }`}>
+    Transport & Equipment Solutions
+  </p>
+</div>
+</Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">

@@ -37,7 +37,7 @@ const clients = [
   { name: "Al Hajry", logo: alHajry, isWhite: true },
   { name: "Burj Al Shaya", logo: burj, isWhite: false },
   { name: "Galfar", logo: galfar, isWhite: false },
-  { name: "GDS", logo: gds, isWhite: true },
+  { name: "GDS", logo: gds, isWhite: false },
   { name: "Iacovou", logo: iacovou, isWhite: false },
   { name: "IKK Group", logo: ikk, isWhite: false },
   { name: "Kabbani Group", logo: islamkairi, isWhite: true },

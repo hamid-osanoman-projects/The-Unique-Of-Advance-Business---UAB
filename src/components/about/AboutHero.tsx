@@ -16,9 +16,9 @@ const AboutHero = () => {
               />
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <button className="w-16 h-16 sm:w-20 sm:h-20 bg-accent rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 shadow-accent-glow group">
+                {/* <button className="w-16 h-16 sm:w-20 sm:h-20 bg-accent rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 shadow-accent-glow group">
                   <Play className="w-6 h-6 sm:w-8 sm:h-8 text-accent-foreground ml-1 group-hover:scale-110 transition-transform" fill="currentColor" />
-                </button>
+                </button> */}
               </div>
               {/* Dark overlay */}
               <div className="absolute inset-0 bg-primary/30 pointer-events-none" />
