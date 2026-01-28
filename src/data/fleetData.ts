@@ -76,7 +76,7 @@ export const vehicles: Vehicle[] = [
   //   },
   //   usageType: "Corporate & Site Transport",
   //   availability: "available",
-  //   featured: true
+  //   featured: trues
   // },
   {
     id: "tata-bus",

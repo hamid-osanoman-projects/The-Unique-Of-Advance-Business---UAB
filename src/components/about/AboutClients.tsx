@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 
 // Import all available logos from your assets
-import alHajry from "../../assets/logos/AL-Hajry-logo.png";
+import alHajry from "../../assets/logos/alhajry-logo.png";
 import alTasnim from "../../assets/logos/al-tasnim-logo.png";
-import alZarraq from "../../assets/logos/Al-ZARRAQ-logo.jpg";
-import anson from "../../assets/logos/Anson-logo.png";
+import alZarraq from "../../assets/logos/al-zarraq.jpg";
+import anson from "../../assets/logos/anson-logo.png";
 import atlantic from "../../assets/logos/atlantic_white-Logo.png";
 import burj from "../../assets/logos/burj-logo-lg.png";
 import galfar from "../../assets/logos/galfar-logo.png";
 import masirah from "../../assets/logos/masirah-logo.png";
 import gps from "../../assets/logos/gps-logo.png";
 import iacovou from "../../assets/logos/iacovou_logo.png";
-import ikk from "../../assets/logos/IKK-Group-Logo.png";
+import ikk from "../../assets/logos/ikk-group-logo.png";
 import islamkairi from "../../assets/logos/islamkairi-kabbani-group-logo.png";
 import jalmood from "../../assets/logos/jalmood_logo.jpg";
 import keller from "../../assets/logos/keller-logo.svg";
@@ -20,13 +20,13 @@ import gds from "../../assets/logos/gds-450-white.png";
 
 import moukhtar from "../../assets/logos/moukhtar-logo.gif";
 import novatel from "../../assets/logos/novatel-logo.jpeg";
-import oneic from "../../assets/logos/OneicLogo.png";
+import oneic from "../../assets/logos/oneic-logo.png";
 import opi from "../../assets/logos/opi_logo.avif";
-import royaltech from "../../assets/logos/royaltech-LOGO.png";
+import royaltech from "../../assets/logos/royaltech-logo.png";
 import ryboa from "../../assets/logos/ryboahaima-logo.png";
-import skyline from "../../assets/logos/Skyline-logo.png";
-import zublin from "../../assets/logos/ZUBLIN-STRABAG-LOGO.png";
-import AAMAALogo from "../../assets/logos/AAMAAL-LOGO.png";
+import skyline from "../../assets/logos/skyline-logo.png";
+import zublin from "../../assets/logos/zublin-logo.png";
+import aamaalogo from "../../assets/logos/aamaal-logo.png";
 import abrajlogo from "../../assets/logos/abraj-Logo.png";
 import alnaba from "../../assets/logos/alnaba-logo.png";
 import alnahda from "../../assets/logos/alnahda-logo.png";
@@ -45,7 +45,7 @@ import target from "../../assets/logos/target-logo.png";
 import tls from "../../assets/logos/tls-logo.png";
 import tradekey from "../../assets/logos/tradekey-logo.svg";
 import uep from "../../assets/logos/uep-logo.jpg";
-import wcn from "../../assets/logos/WCN-Logo.jpg";
+import wcn from "../../assets/logos/wcn-logo.jpg";
 
 
 
@@ -81,7 +81,7 @@ const clientList = [
   { name: "Royal Tech", logo: royaltech, isWhite: false },
   { name: "Ryboa Haima", logo: ryboa, isWhite: false },
   { name: "Al Tasnim", logo: alTasnim, isWhite: true },
-  { name: "AAMAL", logo: AAMAALogo, isWhite: false },
+  { name: "AAMAL", logo: aamaalogo, isWhite: false },
   { name: "Abraj", logo: abrajlogo, isWhite: false },
   { name: "Al Naba", logo: alnaba, isWhite: false },
   { name: "Al Nahda", logo: alnahda, isWhite: false },
