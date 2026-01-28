@@ -112,7 +112,7 @@ const Footer = () => {
                 <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center shrink-0 border border-white/10">
                   <Mail className="w-5 h-5 text-accent" />
                 </div>
-                <a href="mailto:abdullah@uniqueom.com" className="text-white font-black hover:text-accent transition-colors tracking-tight break-all">
+                <a href="mailto:abdullah@uniqueom.com" className="text-white/80 font-semibold hover:text-accent transition-colors tracking-tight break-all">
                   abdullah@uniqueom.com
                 </a>
               </li>
