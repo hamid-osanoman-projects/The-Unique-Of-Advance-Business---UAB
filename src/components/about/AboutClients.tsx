@@ -27,7 +27,7 @@ import ryboa from "../../assets/logos/ryboahaima-logo.png";
 import skyline from "../../assets/logos/skyline-logo.png";
 import zublin from "../../assets/logos/zublin-logo.png";
 import aamaalogo from "../../assets/logos/aamaal-logo.png";
-import abrajlogo from "../../assets/logos/abraj-Logo.png";
+import abrajlogo from "../../assets/logos/abraj-logo.png";
 import alnaba from "../../assets/logos/alnaba-logo.png";
 import alnahda from "../../assets/logos/alnahda-logo.png";
 import alossol from "../../assets/logos/alossol-logo.webp";
