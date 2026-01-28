@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import greenTankerImg from "../../assets/vehicles/greentanker1.jpeg";
-import TATATipper1 from "../../assets/vehicles/tatatipper1.jpeg";
+import TATATipper1 from "../../assets/vehicles/tatatipper.jpeg";
 import bus1 from "../../assets/vehicles/bus1.jpeg";
 import { AnimatePresence } from "framer-motion";
 

@@ -20,7 +20,7 @@ import gds from "../../assets/logos/gds-450-white.png";
 
 import moukhtar from "../../assets/logos/moukhtar-logo.gif";
 import novatel from "../../assets/logos/novatel-logo.jpeg";
-import oneic from "../../assets/logos/oneic-logo.png";
+import oneic from "../../assets/logos/oneiclogo.png";
 import opi from "../../assets/logos/opi_logo.avif";
 import royaltech from "../../assets/logos/royaltech-logo.png";
 import ryboa from "../../assets/logos/ryboahaima-logo.png";
@@ -30,7 +30,7 @@ import aamaalogo from "../../assets/logos/aamaal-logo.png";
 import abrajlogo from "../../assets/logos/abraj-logo.png";
 import alnaba from "../../assets/logos/alnaba-logo.png";
 import alnahda from "../../assets/logos/alnahda-logo.png";
-import alossol from "../../assets/logos/alossol-logo.webp";
+import alossol from "../../assets/logos/alosool-logo.webp";
 import alwataniya from "../../assets/logos/alwataniya-logo.png";
 import bpc from "../../assets/logos/bpc-logo.png";
 import dohat from "../../assets/logos/dohat-logo.webp";
