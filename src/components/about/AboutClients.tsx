@@ -24,7 +24,7 @@ import oneic from "../../assets/logos/oneiclogo.png";
 import opi from "../../assets/logos/opi_logo.avif";
 import royaltech from "../../assets/logos/royaltech-logo.png";
 import ryboa from "../../assets/logos/ryboahaima-logo.png";
-import skyline from "../../assets/logos/skyline-logo.png";
+import skyline from "../../assets/logos/skyline.png";
 import zublin from "../../assets/logos/zublin-logo.png";
 import aamaalogo from "../../assets/logos/aamaal-logo.png";
 import abrajlogo from "../../assets/logos/abraj-logo.png";

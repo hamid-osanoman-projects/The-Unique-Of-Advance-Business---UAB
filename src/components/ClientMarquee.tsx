@@ -12,7 +12,7 @@ import atlantic from "../assets/logos/atlantic_white-Logo.png";
 import galfar from "../assets/logos/galfar-logo.png";
 import gps from "../assets/logos/gps-logo.png";
 import keller from "../assets/logos/keller-logo.svg";
-import skyline from "../assets/logos/skyline-logo.png";
+import skyline from "../assets/logos/skyline.png";
 import zublin from "../assets/logos/zublin-logo.png";
 import iacovou from "../assets/logos/iacovou_logo.png";
 import royaltech from "../assets/logos/royaltech-logo.png";
