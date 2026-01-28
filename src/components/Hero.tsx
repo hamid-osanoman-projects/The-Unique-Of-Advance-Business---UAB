@@ -18,7 +18,7 @@ const Hero = () => {
         </video>
       </div>
 
-      <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
+      <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-32">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Content */}
