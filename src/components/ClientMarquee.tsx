@@ -7,7 +7,7 @@ import StaggerItem from "./animations/StaggerItem";
 import alHajry from "../assets/logos/alhajry-logo.png";
 import alTasnim from "../assets/logos/al-tasnim-logo.png";
 import alZarraq from "../assets/logos/al-zarraq.jpg";
-import anson from "../assets/logos/anson-logo.png";
+import anson from "../assets/logos/anson.png";
 import atlantic from "../assets/logos/atlantic_white-Logo.png";
 import galfar from "../assets/logos/galfar-logo.png";
 import gps from "../assets/logos/gps-logo.png";
