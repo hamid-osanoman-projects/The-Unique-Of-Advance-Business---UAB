@@ -11,7 +11,7 @@ const Services = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        <ServicesHero />
+        {/* <ServicesHero /> */}
         <ServiceCards />
         <PricingSection />
         <ServiceRequestForm />

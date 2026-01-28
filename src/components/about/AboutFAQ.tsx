@@ -4,34 +4,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { motion } from "framer-motion";
-import { HelpCircle, MessageCircle, Phone, Plus, Minus } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { MessageCircle, Phone, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Variants } from "framer-motion";
-
-// 1. DEFINE VARIANTS FIRST (Outside the component)
-// const containerVariants = {
-//   hidden: { opacity: 0 },
-//   visible: {
-//     opacity: 1,
-//     transition: {
-//       staggerChildren: 0.1,
-//     },
-//   },
-// };
-
-// const itemVariants = {
-//   hidden: { opacity: 0, y: 20 },
-//   visible: {
-//     opacity: 1,
-//     y: 0,
-//     transition: { duration: 0.5, ease: "easeOut" },
-//   },
-// };
-
-
-
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -70,7 +46,7 @@ const faqs = [
   },
   {
     question: "How can I get a quote for your services?",
-    answer: "You can request a quote by calling us directly, sending an email to theuniqueofadvance@gmail.com, or using the contact form on our website. We typically respond within 24 hours.",
+    answer: "You can request a quote by calling us directly, sending an email to our logistics team, or using the contact form on our website. We typically respond within 24 hours.",
   },
   {
     question: "What types of vehicles are in your fleet?",
@@ -80,72 +56,54 @@ const faqs = [
 
 const AboutFAQ = () => {
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-white relative overflow-hidden">
-      {/* Background Decorative Element */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50 skew-x-[-12deg] translate-x-40" />
-      </div>
+    <section className="py-16 lg:py-22 bg-white relative overflow-hidden">
+      {/* Structural Decoration */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 translate-x-20 z-0" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-left mb-12 lg:mb-16"
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-[2px] w-12 bg-[#F59F0A]"></span>
-            <span className="text-[#F59F0A] font-black font-bold text-xs uppercase">
+        <div className="mb-10 lg:mb-12 max-w-3xl">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-[2px] bg-accent" />
+            <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em] block">
               Support Center
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#101438] mb-4 uppercase font-bold">
-            Frequently Asked <span className="text-accent">Questions</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0F1C] uppercase leading-tight tracking-tight">
+            Frequently Asked <br />
+            <span className="text-accent">Questions</span>
           </h2>
-        </motion.div>
+        </div>
 
-        <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left - Classic FAQ Accordion */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* LEFT: Accordion */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:col-span-2"
+            className="lg:col-span-7"
           >
-            <Accordion type="single" collapsible className="w-full space-y-0 border-t border-slate-200">
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {faqs.map((faq, index) => (
                 <motion.div key={index} variants={itemVariants}>
                   <AccordionItem 
                     value={`item-${index}`}
-                    className="border-b border-slate-200 group transition-colors duration-300 px-0"
+                    className="border border-slate-100 rounded-2xl px-6 bg-white hover:border-accent/30 transition-all duration-300 shadow-sm hover:shadow-md"
                   >
                     <AccordionTrigger 
-                      className="flex py-7 text-left hover:no-underline [&[data-state=open]]:bg-slate-50 transition-all px-4"
+                      className="py-6 text-left hover:no-underline group"
                     >
-                      <div className="flex items-center justify-between w-full pr-4">
-                        <span className="text-md sm:text-lg font-black text-[#101438] uppercase font-bold">
-                          {faq.question}
-                        </span>
-                        
-                        {/* Custom Indicator */}
-                        {/* <div className="relative flex items-center justify-center w-5 h-5 ml-4 flex-shrink-0">
-                          <Plus className="absolute w-5 h-5 text-[#F59F0A] transition-all duration-500 ease-in-out group-data-[state=open]:rotate-90 group-data-[state=open]:opacity-0" />
-                          <Minus className="absolute w-5 h-5 text-[#101438] opacity-0 transition-all duration-500 ease-in-out group-data-[state=open]:opacity-100 group-data-[state=open]:rotate-180" />
-                        </div> */}
-                      </div>
+                      <span className="text-md sm:text-lg font-bold text-[#0A0F1C] uppercase tracking-tight group-hover:text-accent transition-colors">
+                        {faq.question}
+                      </span>
                     </AccordionTrigger>
                     
-                    <AccordionContent className="text-slate-600 px-4 pb-8 leading-relaxed text-base sm:text-lg max-w-3xl overflow-hidden">
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4 }}
-                      >
+                    <AccordionContent className="text-slate-600 pb-6 leading-relaxed text-base">
+                      <div className="pl-0 border-l-2 border-accent/20 pl-4">
                         {faq.answer}
-                      </motion.div>
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 </motion.div>
@@ -159,9 +117,9 @@ const AboutFAQ = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-1"
+            className="lg:col-span-5"
           >
-            <div className="bg-[#101438] p-10 text-white sticky top-24 border-t-4 border-[#F59F0A] shadow-2xl">
+            <div className="bg-[#0A0F1C] p-10 text-white sticky top-24 border-t-4 border-[#F59F0A] shadow-2xl">
               <div className="w-12 h-12 bg-[#F59F0A] flex items-center justify-center mb-8">
                 <MessageCircle className="w-6 h-6 text-white" />
               </div>

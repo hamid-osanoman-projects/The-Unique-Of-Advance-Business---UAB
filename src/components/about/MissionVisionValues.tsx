@@ -31,26 +31,28 @@ const MissionVisionValues = () => {
   const activeContent = tabs.find((tab) => tab.id === activeTab);
 
   return (
-    <section className="py-20 lg:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-16 lg:mb-20">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="h-[2px] w-12 bg-[#F59F0A]"></span>
-            <span className="text-[#F59F0A] font-black font-bold text-sm uppercase">
+        <div className="mb-10 lg:mb-12 max-w-3xl">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-[2px] bg-accent" />
+            <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em] block">
               Corporate Essence
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold font-black text-[#101438] uppercase ">
-            The Foundation <br /><span className="text-slate-400">of Our <span className="text-accent">Excellence</span></span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0F1C] uppercase leading-tight tracking-tight">
+            The Foundation <br />
+            <span className="text-slate-400">of Our <span className="text-accent">Excellence</span></span>
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-0 border border-slate-200 shadow-2xl">
+        {/* The Component Box */}
+        <div className="grid lg:grid-cols-12 gap-0 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-slate-100">
           
-          {/* Left Side: Navigation (4 Columns) */}
-          <div className="lg:col-span-4 bg-[#101438] p-0 flex flex-col">
+          {/* Left Side: Navigation */}
+          <div className="lg:col-span-4 bg-[#0A0F1C] p-0 flex flex-col">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -58,33 +60,35 @@ const MissionVisionValues = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative flex items-center justify-between px-8 py-10 transition-all duration-300 group border-b border-white/5 last:border-b-0 ${
-                    isActive ? "bg-white/5" : "hover:bg-white/[0.02]"
+                  className={`relative flex items-center justify-between px-8 py-12 transition-all duration-500 group border-b border-white/5 last:border-b-0 ${
+                    isActive ? "bg-white/[0.03]" : "hover:bg-white/[0.01]"
                   }`}
                 >
-                  <div className="flex items-center gap-5">
-                    <Icon className={`w-6 h-6 transition-colors duration-300 ${
-                      isActive ? "text-[#F59F0A]" : "text-white/40 group-hover:text-white"
-                    }`} />
-                    <span className={`text-lg font-black uppercase font-bold transition-colors duration-300 ${
+                  <div className="flex items-center gap-5 z-10">
+                    <div className={`p-3 rounded-lg transition-colors duration-300 ${
+                      isActive ? "bg-accent text-white" : "bg-white/5 text-white/40 group-hover:text-white"
+                    }`}>
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className={`text-lg font-bold uppercase tracking-widest transition-colors duration-300 ${
                       isActive ? "text-white" : "text-white/40 group-hover:text-white"
                     }`}>
                       {tab.label}
                     </span>
                   </div>
                   
-                  {/* Indicator Arrow */}
+                  {/* Arrow for Active Tab */}
                   {isActive && (
-                    <motion.div layoutId="arrow">
-                      <ArrowRight className="text-[#F59F0A] w-6 h-6" />
+                    <motion.div layoutId="arrow" className="z-10">
+                      <ArrowRight className="text-accent w-6 h-6" />
                     </motion.div>
                   )}
                   
-                  {/* Active Sidebar Line */}
+                  {/* Indicator Line */}
                   {isActive && (
                     <motion.div 
                       layoutId="sidebar" 
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-[#F59F0A]" 
+                      className="absolute left-0 top-0 bottom-0 w-1.5 bg-accent shadow-[4px_0_15px_rgba(245,159,10,0.4)]" 
                     />
                   )}
                 </button>
@@ -92,31 +96,39 @@ const MissionVisionValues = () => {
             })}
           </div>
 
-          {/* Right Side: Content (8 Columns) */}
-          <div className="lg:col-span-8 bg-slate-50 p-8 sm:p-12 lg:p-20 flex items-center min-h-[400px]">
+          {/* Right Side: Content Area */}
+          <div className="lg:col-span-8 bg-slate-50 p-10 sm:p-16 lg:p-24 flex items-center min-h-[450px] relative">
+            {/* Faint Background Logo/Watermark */}
+            <div className="absolute right-10 bottom-10 opacity-[0.03] select-none pointer-events-none">
+                <Target size={300} strokeWidth={1} />
+            </div>
+
             <AnimatePresence mode="wait">
               {activeContent && (
                 <motion.div
                   key={activeContent.id}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="w-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, ease: "circOut" }}
+                  className="w-full relative z-10"
                 >
-                  <h3 className="text-3xl sm:text-4xl font-black text-[#101438] mb-8 uppercase font-bold flex items-center gap-4">
-                    <span className="w-12 h-1 bg-[#F59F0A]"></span>
-                    {activeContent.title}
-                  </h3>
-                  <p className="text-slate-500 text-md sm:text-lg leading-relaxed font-medium italic">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-1.5 bg-accent rounded-full" />
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#0A0F1C] uppercase">
+                      {activeContent.title}
+                    </h3>
+                  </div>
+                  
+                  <p className="text-slate-500 text-lg sm:text-xl leading-relaxed font-medium italic">
                     "{activeContent.content}"
                   </p>
                   
-                  <div className="mt-12">
-                    <div className="inline-block px-4 py-2 border border-[#101438]/10 text-[#101438]/40 font-black text-xs uppercase tracking-[0.2em]">
-                      The Unique Of Advance Business &copy; 2015
-                    </div>
-                  </div>
+                  {/* <div className="mt-16 pt-8 border-t border-slate-200">
+                    <p className="text-[#0A0F1C]/30 font-bold text-xs uppercase tracking-[0.4em]">
+                      UAB Logistics &copy; Standard of Service
+                    </p>
+                  </div> */}
                 </motion.div>
               )}
             </AnimatePresence>

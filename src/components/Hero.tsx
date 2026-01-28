@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Globe, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Play, Globe, ShieldCheck, Zap, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import CountUpNumber from "./animations/CountUpNumber";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     // Background set to your specific hex: #101438
-    <section id="home" className="relative min-h-screen flex items-center bg-[#101438] overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center bg-[#0A0F1C] overflow-hidden">
       
       {/* Background Video Layer */}
       <div className="absolute inset-0 z-0">
@@ -28,22 +28,22 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }} 
               transition={{ duration: 0.8 }}
             >
-              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+              <div className="flex items-center gap-3 mb-2 sm:mb-4">
                 <span className="h-[2px] w-8 sm:w-12 bg-[#F59F0A]"></span>
-                <span className="text-[#F59F0A] font-bold tracking-[0.2em] text-[10px] sm:text-xs uppercase">
+                <span className="text-[#F59F0A] font-bold tracking-[0.2em] text-[10px] sm:text-[10px] uppercase">
                   Oman's Transport Leader
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] mb-4 tracking-tighter">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] mb-4 ">
                 THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/30">UNIQUE</span>
                 <br />
-                <span className="text-[#F59F0A] text-2xl sm:text-4xl md:text-5xl lg:text-6xl uppercase block mt-2">
+                <span className="text-[#F59F0A] text-2xl sm:text-4xl md:text-5xl lg:text-5xl uppercase block mt-2">
                   Of Advance Business
                 </span>
               </h1>
 
-              <p className="text-slate-300 text-base sm:text-lg md:text-xl max-w-xl mb-8 sm:mb-10 leading-relaxed border-l-2 border-[#F59F0A] pl-4 sm:pl-6">
+              <p className="text-slate-300 text-sm sm:text-md md:text-lg max-w-xl mb-8 sm:mb-10 leading-relaxed border-l-2 border-[#F59F0A] pl-4 sm:pl-6">
                 Reliable transport and heavy machinery solutions serving Muscat and all governorates with a fleet of 40+ specialized vehicles.
               </p>
 
@@ -78,14 +78,15 @@ const Hero = () => {
           {/* Right Stats Grid - Responsive Column adjustment */}
           <div className="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4 mt-8 lg:mt-0">
              <div className="col-span-2 bg-white/5 backdrop-blur-xl p-6 sm:p-8 border border-white/10 relative overflow-hidden group">
-                <div className="relative z-10">
-                  <p className="text-[#F59F0A] text-5xl sm:text-6xl font-black">
-                    <CountUpNumber value={40} suffix="+" />
-                  </p>
-                  <p className="text-white/60 font-bold uppercase text-[10px] tracking-widest">Active Fleet Units</p>
-                </div>
-                <Globe className="absolute -right-4 -bottom-4 w-24 h-24 sm:w-32 sm:h-32 text-white/5 group-hover:text-[#F59F0A]/10 transition-colors" />
-             </div>
+  <div className="relative z-10">
+    <p className="text-[#F59F0A] text-5xl sm:text-6xl font-black">
+      <CountUpNumber value={14} suffix="+" />
+    </p>
+    <p className="text-white/60 font-bold uppercase text-[10px] tracking-widest">Years of Excellence</p>
+    <p className="text-white/30 text-[9px] mt-1">Serving Oman Since 2010</p>
+  </div>
+  <Clock className="absolute -right-4 -bottom-4 w-24 h-24 sm:w-32 sm:h-32 text-white/5 group-hover:text-[#F59F0A]/10 transition-colors" />
+</div>
              <div className="bg-white/5 backdrop-blur-md p-5 sm:p-6 border border-white/10">
                 <Zap className="text-[#F59F0A] mb-3 sm:mb-4 w-5 h-5 sm:w-6 sm:h-6" />
                 <p className="text-white text-xl sm:text-2xl font-black">24/7</p>

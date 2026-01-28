@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, CheckCircle, Sparkles, Users, Wrench, Phone } from "lucide-react";
+import { 
+  ArrowLeft, ArrowRight, CheckCircle, Sparkles, 
+  Users, Wrench, Phone, ShieldCheck, MapPin, Clock 
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -17,25 +20,21 @@ const ServiceDetail = () => {
   const { id } = useParams<{ id: string }>();
   const service = getServiceById(id || "");
 
-  // Helper Function for Professional WhatsApp Link
   const getWhatsAppLink = (serviceTitle: string) => {
     const phone = "96891116925";
-    const message = `Hello. I am interested in your ${serviceTitle}. I would like to know more details. Can you assist me?`;
+    const message = `Hello UAB. I want to ask about: ${serviceTitle}. Do you have availability?`;
     return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
   };
 
   if (!service) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-[#FDFDFD]">
         <Header />
-        <main className="py-20">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-3xl font-bold text-foreground mb-4">Service Not Found</h1>
-            <p className="text-muted-foreground mb-8">The service you're looking for doesn't exist.</p>
-            <Button asChild>
-              <Link to="/services">Back to Services</Link>
-            </Button>
-          </div>
+        <main className="py-40 text-center">
+          <h1 className="text-4xl font-black text-[#0A0F1C] uppercase tracking-tighter">Service Not Found</h1>
+          <Button asChild className="mt-8 bg-[#0A0F1C] rounded-none">
+            <Link to="/services">Back to All Services</Link>
+          </Button>
         </main>
         <Footer />
       </div>
@@ -48,107 +47,98 @@ const ServiceDetail = () => {
   const prevService = servicesData[(currentIndex - 1 + servicesData.length) % servicesData.length];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#FDFDFD]">
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative py-16 sm:py-20 lg:py-28 bg-gradient-to-b from-primary/10 to-background overflow-hidden">
-          <motion.div
-            className="absolute -top-1/2 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 15, repeat: Infinity }}
-          />
-          
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <AnimatedSection className="mb-6 sm:mb-8">
-              <Link 
-                to="/services" 
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Services
-              </Link>
-            </AnimatedSection>
-
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              <AnimatedSection>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-primary rounded-xl flex items-center justify-center shadow-lg">
-                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary-foreground" />
+        {/* Hero Section - Industrial Style */}
+        <section className="relative pt-32 pb-16 lg:pt-48 lg:pb-24 border-b border-slate-100 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-12 gap-12 items-center">
+              
+              <div className="lg:col-span-7">
+                <AnimatedSection>
+                  <div className="flex items-center gap-3 mb-6">
+                    {/* <div className="w-12 h-12 bg-[#0A0F1C] text-white flex items-center justify-center rounded-sm shadow-xl">
+                      <Icon className="w-6 h-6" />
+                    </div> */}
+                    <div className="h-[2px] w-12 bg-accent"></div>
+                    {/* <span className="text-[#0A0F1C] font-black text-xs uppercase tracking-[0.3em]">
+                      UAB Service Profile
+                    </span> */}
                   </div>
-                  <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider">
-                    Professional Service
-                  </span>
-                </div>
-                
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
-                  {service.title}
-                </h1>
-                
-                <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
-                  {service.detailedDescription}
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    variant="accent" 
-                    size="lg" 
-                    onClick={() => setIsModalOpen(true)}
-                    className="inline-flex items-center gap-2"
-                  >
-                    Get a Quote
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
                   
-                  {/* WhatsApp Dynamic Link in Hero */}
-                  <Button variant="outline" size="lg" asChild className="border-primary/20 hover:bg-primary/5">
-                    <a 
-                      href={getWhatsAppLink(service.title)} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2"
-                    >
-                      WhatsApp Details
-                    </a>
-                  </Button>
-                </div>
-              </AnimatedSection>
+                  <h1 className="text-2xl sm:text-3xl lg:text-5xl font-black text-[#0A0F1C] mb-6 uppercase tracking-tighter leading-[0.9]">
+                    {service.title}
+                  </h1>
+                  
+                  <p className="text-slate-600 text-sm sm:text-base mb-10 leading-relaxed font-medium max-w-2xl">
+                    {service.detailedDescription}
+                  </p>
 
-              <AnimatedSection delay={0.2}>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-64 sm:h-80 lg:h-96 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
-                </div>
-              </AnimatedSection>
+                  {/* Quick Info Bar */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
+                    <div className="flex items-center gap-2 border-l-2 border-slate-100 pl-4">
+                      <Clock className="w-4 h-4 text-accent" />
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">24/7 Support</span>
+                    </div>
+                    <div className="flex items-center gap-2 border-l-2 border-slate-100 pl-4">
+                      <ShieldCheck className="w-4 h-4 text-accent" />
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Fully Licensed</span>
+                    </div>
+                    <div className="flex items-center gap-2 border-l-2 border-slate-100 pl-4">
+                      <MapPin className="w-4 h-4 text-accent" />
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Oman Wide</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button 
+                      className="bg-[#0A0F1C] hover:bg-accent text-white h-12 px-8 rounded-md font-black uppercase tracking-widest transition-all shadow-lg"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      Request Quote
+                    </Button>
+                    <Button variant="outline" className="border-[#0A0F1C] text-[#0A0F1C] h-12 px-8 rounded-md font-black uppercase tracking-widest" asChild>
+                      <a href={getWhatsAppLink(service.title)} target="_blank" rel="noopener noreferrer">
+                        Chat on WhatsApp
+                      </a>
+                    </Button>
+                  </div>
+                </AnimatedSection>
+              </div>
+
+              <div className="lg:col-span-5">
+                <AnimatedSection delay={0.2}>
+                  <div className="relative group">
+                    <div className="absolute -inset-4 bg-accent/10 rounded-xl -rotate-2 transition-transform group-hover:rotate-0" />
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="relative w-full h-[400px] lg:h-[500px] object-cover rounded-md shadow-2xl border-4 border-white"
+                    />
+                  </div>
+                </AnimatedSection>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-16 sm:py-20 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-              <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 block">
-                What's Included
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Key Features & Capabilities
+        {/* Features Grid */}
+        <section className="py-20 bg-[#F8FAFC]">
+          <div className="container mx-auto px-4">
+            <AnimatedSection className="mb-16">
+              <h2 className="text-3xl font-black text-[#0A0F1C] uppercase tracking-tighter flex items-center gap-4">
+                <span className="bg-accent text-white px-3 py-1 text-sm">01</span>
+                What We Offer
               </h2>
-              <p className="text-muted-foreground">
-                Everything you need for reliable {service.title.toLowerCase()} services in Oman.
-              </p>
             </AnimatedSection>
 
-            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {service.features.map((feature, idx) => (
                 <StaggerItem key={idx}>
-                  <div className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300 h-full">
-                    <CheckCircle className="w-6 h-6 text-accent mb-3" />
-                    <p className="text-foreground font-medium text-sm sm:text-base">{feature}</p>
+                  <div className="bg-white border border-slate-100 p-8 rounded-md hover:border-accent transition-all duration-300 group shadow-sm h-full">
+                    <CheckCircle className="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" />
+                    <p className="text-[#0A0F1C] font-black text-sm uppercase tracking-tight leading-snug">{feature}</p>
                   </div>
                 </StaggerItem>
               ))}
@@ -156,139 +146,73 @@ const ServiceDetail = () => {
           </div>
         </section>
 
-        {/* Benefits Section */}
-        <section className="py-16 sm:py-20 bg-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* Benefits & Use Cases */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-20 items-start">
+              
+              {/* Benefits List */}
               <AnimatedSection>
-                <div className="flex items-center gap-2 mb-4">
-                  <Sparkles className="w-5 h-5 text-accent" />
-                  <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider">
-                    Why Choose Us
-                  </span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Benefits for Your Business
+                <h2 className="text-3xl font-black text-[#0A0F1C] uppercase tracking-tighter mb-10 flex items-center gap-4">
+                  <span className="bg-[#0A0F1C] text-white px-3 py-1 text-sm">02</span>
+                  Why Choose UAB
                 </h2>
-                <p className="text-muted-foreground mb-8">
-                  Partner with The Unique of Advance Business to experience professional service 
-                  delivery that prioritizes your operational success.
-                </p>
-
-                <StaggerContainer className="space-y-4">
+                <div className="space-y-4">
                   {service.benefits.map((benefit, idx) => (
-                    <StaggerItem key={idx}>
-                      <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-                        <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-primary text-xs font-bold">{idx + 1}</span>
-                        </div>
-                        <p className="text-foreground text-sm sm:text-base">{benefit}</p>
-                      </div>
-                    </StaggerItem>
+                    <div key={idx} className="flex items-center gap-4 p-5 bg-[#F8FAFC] border-l-4 border-accent rounded-r-md">
+                      <span className="text-xl font-black text-slate-200">{(idx + 1).toString().padStart(2, '0')}</span>
+                      <p className="text-[#0A0F1C] font-bold text-sm uppercase tracking-tight">{benefit}</p>
+                    </div>
                   ))}
-                </StaggerContainer>
+                </div>
               </AnimatedSection>
 
+              {/* Use Cases Box */}
               <AnimatedSection delay={0.2}>
-                <div className="bg-primary rounded-2xl p-8 sm:p-10 text-primary-foreground shadow-xl">
-                  <div className="flex items-center gap-2 mb-6">
-                    <Users className="w-5 h-5" />
-                    <span className="font-semibold text-sm uppercase tracking-wider opacity-80">
-                      Who It's For
-                    </span>
+                <div className="bg-[#0A0F1C] rounded-md p-10 text-white shadow-2xl relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <Users className="w-32 h-32" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-6">Ideal Use Cases</h3>
-                  <ul className="space-y-4">
+                  <h3 className="text-2xl font-black uppercase tracking-tighter mb-8 border-b border-white/10 pb-4">
+                    Common Uses
+                  </h3>
+                  <ul className="grid gap-6">
                     {service.useCases.map((useCase, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <ArrowRight className="w-4 h-4 mt-1 flex-shrink-0 opacity-70" />
-                        <span className="text-sm sm:text-base opacity-90">{useCase}</span>
+                      <li key={idx} className="flex items-center gap-4 group">
+                        <div className="w-2 h-2 bg-accent rounded-full transition-all group-hover:w-4" />
+                        <span className="text-slate-300 font-medium group-hover:text-white transition-colors">{useCase}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </AnimatedSection>
+
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 sm:py-24 bg-primary text-primary-foreground relative overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <AnimatedSection>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-                Ready to Get Started?
-              </h2>
-              <p className="text-primary-foreground/80 text-base sm:text-lg max-w-2xl mx-auto mb-10">
-                Contact our team today to discuss your {service.title.toLowerCase()} requirements 
-                and receive a customized quote for your Omani operations.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  variant="accent" 
-                  size="lg" 
-                  onClick={() => setIsModalOpen(true)}
-                  className="h-14 px-8 text-base font-bold shadow-lg"
-                >
-                  Request Official Quote
-                </Button>
-                
-                {/* Fixed Dynamic WhatsApp Button */}
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="bg-transparent border-white/30 text-white hover:bg-white/10 h-14 px-8 text-base font-bold"
-                  asChild
-                >
-                  <a 
-                    href={getWhatsAppLink(service.title)} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    Chat on WhatsApp
-                  </a>
-                </Button>
-              </div>
-            </AnimatedSection>
-          </div>
-          {/* Decorative Background Element */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-             <div className="absolute top-0 right-0 w-64 h-64 bg-white blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
-             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white blur-3xl rounded-full translate-y-1/2 -translate-x-1/2" />
-          </div>
-        </section>
-
-        {/* Navigation to Other Services */}
-        <section className="py-12 sm:py-16 bg-background border-t border-border">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
-              <Link 
-                to={`/services/${prevService.id}`}
-                className="group flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                <div className="text-left">
-                  <span className="text-xs uppercase tracking-wider opacity-70">Previous</span>
-                  <p className="font-medium">{prevService.title}</p>
+        {/* Simplified Navigation */}
+        <section className="py-12 border-t border-slate-100 bg-[#FDFDFD]">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-8">
+              <Link to={`/services/${prevService.id}`} className="group flex flex-col items-start gap-2">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Previous Service</span>
+                <div className="flex items-center gap-3 text-[#0A0F1C] group-hover:text-accent transition-colors">
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-2 transition-transform" />
+                  <span className="font-black uppercase tracking-tighter text-lg">{prevService.title}</span>
                 </div>
               </Link>
 
-              <Link 
-                to="/services"
-                className="text-accent hover:text-accent/80 font-bold transition-colors uppercase tracking-widest text-sm"
-              >
-                View All Services
+              <Link to="/services" className="px-6 py-2 border-2 border-[#0A0F1C] font-black uppercase text-[10px] tracking-[0.3em] hover:bg-[#0A0F1C] hover:text-white transition-all">
+                All Services
               </Link>
 
-              <Link 
-                to={`/services/${nextService.id}`}
-                className="group flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <div className="text-right">
-                  <span className="text-xs uppercase tracking-wider opacity-70">Next</span>
-                  <p className="font-medium">{nextService.title}</p>
+              <Link to={`/services/${nextService.id}`} className="group flex flex-col items-end gap-2">
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Next Service</span>
+                <div className="flex items-center gap-3 text-[#0A0F1C] group-hover:text-accent transition-colors">
+                  <span className="font-black uppercase tracking-tighter text-lg">{nextService.title}</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </div>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>

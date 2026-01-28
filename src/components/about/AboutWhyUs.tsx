@@ -26,7 +26,7 @@ const AboutWhyUs = () => {
             </div>
             
             {/* Floating badge */}
-            <div className="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 bg-primary text-primary-foreground rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl">
+            <div className="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 bg-[#0A0F1C] text-primary-foreground rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl">
               <p className="text-2xl sm:text-3xl md:text-4xl font-bold mb-0.5 sm:mb-1">14+</p>
               <p className="text-primary-foreground/70 text-xs sm:text-sm">Years Experience</p>
             </div>
@@ -34,15 +34,19 @@ const AboutWhyUs = () => {
 
           {/* Right - Content */}
           <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-            <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4 block">
-              Why Choose Us
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 uppercase leading-tight">
-              Why Choose <span className="text-accent">Us</span> ?
-            </h2>
+            <div className="flex items-center gap-3 mb-6">
+  <div className="w-10 h-[2px] bg-accent" />
+  <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em] block">
+    Our Promise
+  </span>
+</div>
+
+<h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0F1C] mb-8 uppercase leading-tight">
+  Why Companies <br /><span className="text-accent">Trust Us</span>
+</h2>
             <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
               We've built a reputation for excellence by consistently delivering on our promises 
-              and exceeding client expectations. Here's what sets us apart:
+              and exceeding client expectations. 
             </p>
 
             {/* Features List */}

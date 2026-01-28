@@ -9,41 +9,49 @@ import { servicesData } from "@/data/servicesData";
 
 const Services = () => {
   return (
-    <section id="services" className="py-16 sm:py-20 lg:py-28 bg-gradient-section relative overflow-hidden">
-      {/* Subtle background animation */}
-      <motion.div
-        className="absolute -top-1/2 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"
-        animate={{
-          scale: [1, 1.1, 1],
-          x: [0, 30, 0],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <section id="services" className="py-20 lg:py-32 bg-[#0A0F1C] relative overflow-hidden">
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-indigo-600/10 blur-[120px]"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-[100px]"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <AnimatedSection className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16">
-          <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4 block">
+        <AnimatedSection className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+          <motion.span 
+            className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em] mb-4 block"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+          >
             Reliable Solutions in Oman
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 uppercase leading-tight">
+          </motion.span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 uppercase leading-tight tracking-tight">
             Our Core <span className="text-accent">Services</span> 
           </h2>
-          <motion.div 
-            className="w-16 sm:w-20 h-1 bg-primary mx-auto rounded-full mb-4 sm:mb-6"
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          />
-          <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4 sm:px-0">
-            From specialized staff transport to heavy machinery rentals, we provide high-quality fleet solutions tailored for Omani businesses and institutions.
-          </p>
+          <div className="w-24 h-1 bg-accent mx-auto rounded-full mb-8" />
+          {/* <p className="text-slate-400 text-sm lg:text-md leading-relaxed">
+            Tailored fleet solutions and heavy machinery rentals designed to power the infrastructure of the Sultanate.
+          </p> */}
         </AnimatedSection>
 
-        {/* Services Grid - UPDATED TO 4 COLUMNS */}
+        {/* Services Grid */}
         <StaggerContainer 
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-6 justify-center max-w-7xl mx-auto" 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto" 
           staggerDelay={0.1}
         >
           {servicesData.map((service, index) => {
@@ -55,46 +63,43 @@ const Services = () => {
                 <HoverCard className="h-full">
                   <Link 
                     to={`/services/${service.id}`}
-                    className="group relative bg-card border border-border rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:border-primary/50 transition-all duration-500 hover:shadow-xl h-full block"
+                    className="group relative bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/[0.07] transition-all duration-500 hover:border-accent/40 h-full block overflow-hidden shadow-2xl"
                   >
+                    {/* Background Glow Effect on Hover */}
+                    <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/10 blur-3xl group-hover:bg-accent/20 transition-all duration-500 rounded-full" />
+                    
                     {/* Number Badge */}
                     <div className="absolute top-6 right-8">
-                      <motion.span 
-                        className="text-3xl font-black text-primary/10 group-hover:text-primary/20 transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                      >
+                      <span className="text-4xl font-black text-white/5 group-hover:text-accent/10 transition-colors duration-500 italic">
                         {number}
-                      </motion.span>
+                      </span>
                     </div>
                     
-                    {/* Icon */}
-                    <div className="relative mb-6">
-                      <motion.div 
-                        className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:shadow-primary-glow transition-all duration-300"
-                        whileHover={{ rotate: 10 }}
-                      >
-                        <Icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
-                      </motion.div>
+                    {/* Icon Container */}
+                    <div className="relative mb-8">
+                      <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(245,159,10,0.4)] transition-all duration-500 border border-accent/20">
+                        <Icon className="w-7 h-7 text-accent group-hover:text-white transition-colors duration-300" />
+                      </div>
                     </div>
 
-                    {/* Content */}
+                    {/* Text Content */}
                     <div className="relative">
-                      <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300 pr-6">
+                      <h3 className="text-xl font-bold text-white mb-4 group-hover:text-accent transition-colors duration-300">
                         {service.title}
                       </h3>
-                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-6 line-clamp-3">
+                      <p className="text-slate-400 text-sm leading-relaxed mb-8 group-hover:text-slate-300 transition-colors duration-300 text">
                         {service.shortDescription}
                       </p>
                       
-                      {/* Learn More Link */}
-                      <motion.span 
-                        className="inline-flex items-center gap-2 text-primary font-medium text-sm link-underline"
-                        whileHover={{ x: 5 }}
-                      >
-                        Learn More
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </motion.span>
+                      {/* Action Link */}
+                      <div className="inline-flex items-center gap-2 text-accent font-bold text-sm uppercase tracking-wider group-hover:gap-4 transition-all duration-300">
+                        <span>Learn More</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
                     </div>
+
+                    {/* Bottom Border Accent */}
+                    <div className="absolute bottom-0 left-0 w-0 h-1 bg-accent group-hover:w-full transition-all duration-500" />
                   </Link>
                 </HoverCard>
               </StaggerItem>

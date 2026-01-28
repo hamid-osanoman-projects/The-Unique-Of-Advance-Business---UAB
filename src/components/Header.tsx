@@ -1,4 +1,4 @@
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -14,13 +14,12 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -38,187 +37,178 @@ const Header = () => {
     return location.pathname.startsWith(href);
   };
 
-  // Determine header style based on page and scroll
   const showTransparent = isHomePage && !scrolled;
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        showTransparent ? "bg-transparent" : "bg-card/95 backdrop-blur-md shadow-md"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        showTransparent 
+          ? "bg-transparent py-4" 
+          : "bg-white/95 backdrop-blur-md shadow-xl py-2 border-b border-slate-100"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
+        <div className="flex items-center justify-between">
           
-         {/* Logo */}
-<Link to="/" className="flex items-center gap-0 sm:gap-1 group">
-  <motion.div 
-    className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 flex items-center justify-center" 
-    whileHover={{ scale: 1.05 }}
-    transition={{ duration: 0.3 }}
-  >
-    <img 
-      /* Use the imported variables here */
-      src={showTransparent ? uabWhite : uabBlue} 
-      alt="UAB Logo"
-      className="w-full h-full object-contain object-left" 
-    />
-  </motion.div>
+          {/* Logo Section */}
+          <Link to="/" className="flex items-center gap-0 group">
+            <motion.div 
+              className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center relative" 
+              whileHover={{ scale: 1.02 }}
+            >
+              <img 
+                src={showTransparent ? uabWhite : uabBlue} 
+                alt="UAB Logo"
+                className="w-full h-full object-contain" 
+              />
+            </motion.div>
 
-  <div className="hidden xs:block sm:block ml-[-4px] lg:ml-[-8px]">
-    <p className={`font-archivo font-bold text-sm sm:text-base lg:text-lg leading-tight transition-colors uppercase ${
-      showTransparent ? 'text-white' : 'text-[#0B1231]'
-    }`}>
-      The Unique Of Advance Business
-    </p>
-    <p className={`font-archivo text-[10px] sm:text-xs tracking-wider uppercase transition-colors ${
-      showTransparent ? 'text-white/70' : 'text-[#0B1231]/60'
-    }`}>
-      Transport & Equipment Solutions
-    </p>
-  </div>
-</Link>
+            <div className="ml-[-4px] lg:ml-[-6px]">
+              <h1 className={`font-black text-xs sm:text-sm lg:text-[15px] leading-none uppercase transition-colors duration-500 ${
+                showTransparent ? 'text-white' : 'text-[#0B1231]'
+              }`}>
+                The Unique Of Advance Business
+              </h1>
+              {/* <p className={`text-[8px] sm:text-[9px] font-bold tracking-[0.2em] uppercase mt-1 transition-colors duration-500 ${
+                showTransparent ? 'text-accent' : 'text-accent'
+              }`}>
+                Logistics & Equipment
+              </p> */}
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {navLinks.map((link, index) => (
-              <motion.div
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
                 key={link.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + index * 0.05 }}
+                to={link.href}
+                className={`font-black text-[11px] uppercase tracking-[0.2em] transition-all relative py-2 group ${
+                  isActive(link.href) 
+                    ? 'text-accent' 
+                    : showTransparent 
+                      ? 'text-white/80 hover:text-white' 
+                      : 'text-slate-600 hover:text-[#0B1231]'
+                }`}
               >
-                <Link
-                  to={link.href}
-                  className={`font-medium text-sm xl:text-base transition-colors duration-300 relative ${
-                    isActive(link.href) 
-                      ? 'text-accent' 
-                      : showTransparent 
-                        ? 'text-primary-foreground/90 hover:text-primary-foreground' 
-                        : 'text-foreground/80 hover:text-accent'
-                  }`}
-                >
-                  {link.name}
-                  {isActive(link.href) && (
-                    <motion.div
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent"
-                      layoutId="activeNav"
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </Link>
-              </motion.div>
+                {link.name}
+                <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-accent transition-transform duration-300 origin-left ${
+                  isActive(link.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`} />
+              </Link>
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex items-center gap-3 xl:gap-4">
-            <a href="tel:+96891116925" className={`flex items-center gap-2 transition-colors text-sm group ${
-              showTransparent ? 'text-primary-foreground/80 hover:text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-            }`}>
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-              >
-                <Phone className="w-4 h-4" />
-              </motion.div>
-              <span className="font-medium">+968 91116925</span>
-            </a>
-            {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="accent" size="default" className="btn-shimmer">
-                Get a Quote
-              </Button>
-            </motion.div> */}
+          {/* Contact & CTA */}
+          <div className="hidden lg:flex items-center gap-8">
+            <div className="flex flex-col items-end gap-1">
+  <a 
+    href="tel:+96891116925" 
+    className={`group relative flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-500 ${
+      showTransparent 
+        ? 'bg-white/20 text-white hover:bg-white/20' 
+        : 'bg-slate-100 text-[#0B1231] hover:bg-accent hover:text-white'
+    }`}
+  >
+    {/* Animated Glow Dot */}
+    {/* <span className="relative flex h-2 w-2">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+    </span> */}
+
+    <div className="flex items-center gap-2">
+      <Phone className={`w-3 h-3 ${showTransparent ? 'text-accent' : 'text-accent group-hover:text-white'}`} />
+      <span className="text-[12px] font-black tracking-tight">+968 9111 6925</span>
+    </div>
+  </a>
+  
+  {/* Optional: Second number smaller below */}
+  {/* <a href="tel:+96891194547" className={`text-[10px] font-bold pr-4 opacity-60 hover:opacity-100 transition-opacity ${
+    showTransparent ? 'text-white' : 'text-slate-500'
+  }`}>
+    Secondary: +968 9119 4547
+  </a> */}
+</div>
+
+            {/* <Button 
+              asChild
+              className={`rounded-none font-black text-[10px] tracking-widest uppercase h-10 px-6 transition-all ${
+                showTransparent 
+                ? "bg-white text-[#0B1231] hover:bg-accent hover:text-white" 
+                : "bg-[#0B1231] text-white hover:bg-accent"
+              }`}
+            >
+              <Link to="/contact">Get Quote</Link>
+            </Button> */}
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className={`lg:hidden p-2 -mr-2 ${showTransparent ? 'text-primary-foreground' : 'text-foreground'}`}
+          {/* Mobile Toggle */}
+          <button
+            className={`lg:hidden p-2 rounded-lg transition-colors ${
+              showTransparent ? 'text-white bg-white/10' : 'text-[#0B1231] bg-slate-100'
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-            whileTap={{ scale: 0.9 }}
           >
-            <AnimatePresence mode="wait">
-              {mobileMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="w-6 h-6" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="w-6 h-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="lg:hidden overflow-hidden"
-            >
-              <div className="py-4 border-t border-border/50 bg-card/95 backdrop-blur-md rounded-b-xl">
-                <nav className="flex flex-col gap-1 px-2">
-                  {navLinks.map((link, index) => (
-                    <motion.div
-                      key={link.name}
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link
-                        to={link.href}
-                        className={`transition-colors font-medium py-3 px-4 rounded-lg block ${
-                          isActive(link.href) 
-                            ? 'text-primary bg-primary/10' 
-                            : 'text-foreground/80 hover:text-primary hover:bg-muted'
-                        }`}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  ))}
-                  <motion.div 
-                    className="pt-4 mt-2 flex flex-col gap-3 border-t border-border/50 px-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <a href="tel:+96891116925" className="flex items-center gap-2 text-muted-foreground py-2">
-                      <Phone className="w-4 h-4" />
-                      <span>+968 91116925</span>
-                    </a>
-                    <Button variant="accent" size="default" className="w-full">
-                      Get a Quote
-                    </Button>
-                  </motion.div>
-                </nav>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 top-0 h-screen w-full bg-[#0B1231] z-[60] lg:hidden flex flex-col"
+          >
+            <div className="p-6 flex justify-between items-center border-b border-white/10">
+              <img src={uabWhite} alt="Logo" className="h-12 w-auto object-contain" />
+              <button onClick={() => setMobileMenuOpen(false)} className="text-white p-2">
+                <X className="w-8 h-8" />
+              </button>
+            </div>
+
+            <nav className="flex-1 flex flex-col justify-center px-8 gap-6">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Link
+                    to={link.href}
+                    className={`text-3xl font-black uppercase tracking-tighter flex items-center justify-between group ${
+                      isActive(link.href) ? 'text-accent' : 'text-white'
+                    }`}
+                  >
+                    {link.name}
+                    <ChevronRight className={`w-6 h-6 transition-transform ${isActive(link.href) ? 'translate-x-0' : '-translate-x-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0'}`} />
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            <div className="p-8 bg-white/5 space-y-4">
+              <p className="text-accent text-[10px] font-black uppercase tracking-widest">Direct Dispatch</p>
+              <div className="grid grid-cols-1 gap-4">
+                <a href="tel:+96891116925" className="text-white font-bold flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-accent" /> +968 9111 6925
+                </a>
+                <a href="tel:+96891194547" className="text-white font-bold flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-accent" /> +968 9119 4547
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };

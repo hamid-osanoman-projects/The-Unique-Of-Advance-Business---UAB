@@ -8,69 +8,57 @@ const ContactMap = () => {
   const googleMapsLink = "https://maps.app.goo.gl/YourActualLocationLink";
 
   return (
-    <section className="py-12 md:py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-8 md:mb-16">
-          <h2 className="text-2xl md:text-4xl font-extrabold text-foreground mb-4 uppercase tracking-tight">
-            Visit Our <span className="text-accent">Office</span>
-          </h2>
-          <div className="h-1 w-12 md:w-20 bg-accent mx-auto mb-4 rounded-full"></div>
-          <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
-            Visit us at our headquarters in Ghala, Muscat for professional transport and equipment consultations.
-          </p>
-        </div>
-
-        {/* Map Wrapper */}
-        <div className="flex flex-col lg:relative rounded-3xl overflow-hidden shadow-2xl border border-border bg-card">
+    <section className="py-20 bg-[#F8FAFC] border-t border-slate-200">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-3 gap-12 items-center">
           
-          {/* Map Container - Aspect ratio changes based on screen size */}
-          <div className="aspect-square sm:aspect-video lg:aspect-[21/9] w-full grayscale-[0.2] contrast-[1.1]">
-            <iframe
-              src={mapEmbedUrl}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              title="UAB Office Location"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full"
-            />
-          </div>
-
-          {/* Info Card - Static on mobile, Floating on Desktop */}
-          <div className="lg:absolute lg:bottom-8 lg:left-8 p-6 md:p-8 lg:max-w-sm w-full bg-card/95 lg:backdrop-blur-md lg:shadow-2xl lg:border lg:border-border lg:rounded-2xl">
-            <div className="flex items-start gap-5">
-              {/* <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/20">
-                <MapPin className="w-6 h-6 text-primary" />
-              </div> */}
-              
-              <div className="flex-1">
-                <h3 className="font-bold text-lg text-foreground mb-2">UAB Head Office</h3>
-                <address className="not-italic text-sm text-muted-foreground mb-6 leading-relaxed">
+          {/* Address Content */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <div className="w-12 h-1 bg-accent mb-6" />
+              <h2 className="text-3xl font-black text-[#0A0F1C] uppercase tracking-tighter mb-4">Our Head <br/>Office</h2>
+              <p className="text-slate-500 font-medium">Muscat, Sultanate of Oman</p>
+            </div>
+            
+            <div className="space-y-6 mb-8">
+              <div className="flex gap-4">
+                <MapPin className="w-6 h-6 text-accent shrink-0" />
+                <address className="not-italic text-sm text-slate-700 leading-relaxed font-semibold uppercase tracking-tight">
                   ASAS Service Center Building, 2nd Floor<br />
                   Office No: 21, Ghala 130<br />
-                  Grand Mosque St, Muscat, OMAN
+                  Grand Mosque St, Muscat
                 </address>
-                
-                <Button
-                  asChild
-                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl h-12 px-8 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <a 
-                    href={googleMapsLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
-                  >
-                    GET DIRECTIONS
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </Button>
+              </div>
+            </div>
+
+            <a 
+              href={googleMapsLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#0A0F1C] hover:text-accent transition-colors border-b-2 border-[#0A0F1C] pb-1"
+            >
+              Get Directions <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+
+          {/* Map Frame - Classic Shadow & Border */}
+          <div className="lg:col-span-2 relative">
+            <div className="bg-white p-3 shadow-2xl rounded-sm border border-slate-200">
+              <div className="h-[400px] w-full bg-slate-100 relative transition-all duration-700">
+                <iframe
+                  src={mapEmbedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="UAB Muscat Office"
+                  className="w-full h-full"
+                />
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </section>

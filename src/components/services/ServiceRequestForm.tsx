@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import emailjs from "@emailjs/browser"; // Import EmailJS
+import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 
 const serviceOptions = [
   "Corporate Transportation",
@@ -39,24 +40,22 @@ const ServiceRequestForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Get keys from .env
     const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_QUOTE_TEMPLATE_ID; // Use the new Quote template
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_QUOTE_TEMPLATE_ID;
     const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     try {
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
-        // This object MUST match your HTML template variables exactly
         {
           user_name: formData.name,
           user_company: formData.company || "Not Provided",
           user_email: formData.email,
           user_phone: formData.phone,
-          service_type: formData.service, // NOT inquiry_type
+          service_type: formData.service,
           duration_period: formData.duration || "Not Specified",
-          project_details: formData.message, // NOT message_details
+          project_details: formData.message,
           site_name: "The Unique of Advance Business", 
         },
         PUBLIC_KEY
@@ -72,7 +71,6 @@ const ServiceRequestForm = () => {
       toast({
         variant: "destructive",
         title: "Error Sending Request",
-        // Show specific error if Zoho blocks relay
         description: error.text || "Please try again or call +968 91116925.",
       });
     } finally {
@@ -82,197 +80,188 @@ const ServiceRequestForm = () => {
 
   if (isSubmitted) {
     return (
-      <section id="request-form" className="py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
+      <section id="request-form" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="max-w-2xl mx-auto text-center"
+          >
+            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 sm:mb-4">
-              Thank You for Your Request!
+            <h2 className="text-3xl font-black text-[#0A0F1C] uppercase mb-4 tracking-tighter">
+              Request Received
             </h2>
-            <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8 px-4">
-              Our team will review your requirements and contact you within 24 hours 
-              with a customized quote.
+            <p className="text-slate-600 text-lg mb-8">
+              Our dispatch team will review your requirements and provide a formal 
+              quote within 24 hours.
             </p>
             <Button 
               variant="accent" 
-              onClick={() => {
-                setIsSubmitted(false);
-                setFormData({
-                  name: "",
-                  company: "",
-                  email: "",
-                  phone: "",
-                  service: "",
-                  duration: "",
-                  message: ""
-                });
-              }}
+              size="lg"
+              className="font-black uppercase tracking-widest"
+              onClick={() => setIsSubmitted(false)}
             >
               Submit Another Request
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
     );
   }
 
   return (
-    <section id="request-form" className="py-16 sm:py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start max-w-6xl mx-auto">
-          {/* Left Content */}
-          <div>
-            <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4 block">
-              Get Started
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
-              Request a Service Quote
+    <section id="request-form" className="py-16 lg:py-22 bg-background relative overflow-hidden">
+      {/* Decorative background text similar to model */}
+      {/* <div className="absolute top-20 right-0 text-[10rem] font-black text-slate-50 select-none leading-none -z-0">
+        QUOTE
+      </div> */}
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-7xl mx-auto">
+          
+          {/* Left Content: Messaging */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] bg-accent" />
+              <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em]">
+                Get Started
+              </span>
+            </div>
+            
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#0A0F1C] mb-8 leading-tight uppercase">
+              Get a Professional <br />
+              <span className="text-accent">Service Quote</span>
             </h2>
-            <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8">
+            
+            <p className="text-slate-600 text-lg mb-10 max-w-lg leading-relaxed font-medium">
               Fill out the form and our team will provide you with a detailed quote 
               tailored to your specific needs within 24 hours.
             </p>
 
-            <div className="space-y-4 sm:space-y-6">
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary font-bold text-sm sm:text-base">01</span>
+            <div className="space-y-8">
+              {[
+                { step: "01", title: "Submit Details", desc: "Briefly describe your vehicle or logistics needs." },
+                { step: "02", title: "Internal Review", desc: "We calculate the best rates based on your timeline." },
+                { step: "03", title: "Final Quote", desc: "Receive a formal proposal within one business day." }
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-5">
+                  <div className="text-2xl font-black text-slate-200 group-hover:text-accent transition-colors">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-[#0A0F1C] uppercase tracking-tight text-base mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-slate-500 text-sm font-medium">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">Submit Your Request</h4>
-                  <p className="text-muted-foreground text-xs sm:text-sm">
-                    Tell us about your transportation or equipment needs.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary font-bold text-sm sm:text-base">02</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">Receive Custom Quote</h4>
-                  <p className="text-muted-foreground text-xs sm:text-sm">
-                    We'll analyze your requirements and provide competitive pricing.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary font-bold text-sm sm:text-base">03</span>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-0.5 sm:mb-1 text-sm sm:text-base">Start Service</h4>
-                  <p className="text-muted-foreground text-xs sm:text-sm">
-                    Once approved, we deploy resources to meet your timeline.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Form */}
-          <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
+          {/* Right Content: The Form */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-card border border-border rounded-[2rem] p-6 lg:p-10 shadow-2xl"
+          >
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
                     Full Name *
                   </label>
                   <Input
-                    id="name"
                     name="name"
-                    type="text"
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your name"
-                    className="w-full h-10 sm:h-11 text-sm"
+                    placeholder="Enter name"
+                    className="h-12 border-slate-200 focus:border-accent"
                   />
                 </div>
-                <div>
-                  <label htmlFor="company" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
-                    Company Name
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Company
                   </label>
                   <Input
-                    id="company"
                     name="company"
-                    type="text"
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Company name"
-                    className="w-full h-10 sm:h-11 text-sm"
+                    className="h-12 border-slate-200"
                   />
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
-                    Email Address *
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Email *
                   </label>
                   <Input
-                    id="email"
                     name="email"
                     type="email"
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="you@company.com"
-                    className="w-full h-10 sm:h-11 text-sm"
+                    placeholder="email@example.com"
+                    className="h-12 border-slate-200"
                   />
                 </div>
-                <div>
-                  <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
-                    Phone Number *
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Phone *
                   </label>
                   <Input
-                    id="phone"
                     name="phone"
-                    type="tel"
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+968 XXXX XXXX"
-                    className="w-full h-10 sm:h-11 text-sm"
+                    placeholder="+968"
+                    className="h-12 border-slate-200"
                   />
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-                <div>
-                  <label htmlFor="service" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
-                    Service Required *
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
+                    Select Service *
                   </label>
                   <select
-                    id="service"
                     name="service"
                     required
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full h-10 sm:h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                    className="flex w-full h-12 rounded-md border border-slate-200 bg-background px-3 py-2 text-sm font-medium ring-offset-background focus:ring-2 focus:ring-accent outline-none appearance-none"
                   >
-                    <option value="">Select a service</option>
+                    <option value="">Choose Service</option>
                     {serviceOptions.map(option => (
                       <option key={option} value={option}>{option}</option>
                     ))}
                   </select>
                 </div>
-                <div>
-                  <label htmlFor="duration" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
                     Duration
                   </label>
                   <select
-                    id="duration"
                     name="duration"
                     value={formData.duration}
                     onChange={handleChange}
-                    className="w-full h-10 sm:h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                    className="flex w-full h-12 rounded-md border border-slate-200 bg-background px-3 py-2 text-sm font-medium outline-none"
                   >
-                    <option value="">Select duration</option>
+                    <option value="">Duration Needed</option>
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
@@ -281,41 +270,36 @@ const ServiceRequestForm = () => {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">
                   Project Details
                 </label>
                 <Textarea
-                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project requirements, timeline, and any specific needs..."
+                  placeholder="Tell us about your requirements..."
                   rows={4}
-                  className="w-full text-sm"
+                  className="border-slate-200 resize-none"
                 />
               </div>
 
               <Button 
                 type="submit" 
                 variant="accent" 
-                className="w-full h-11 sm:h-12" 
+                className="w-full h-14 font-black uppercase tracking-widest shadow-xl shadow-accent/20" 
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
-                  <>
-                    <span className="animate-spin mr-2">⟳</span>
-                    Sending...
-                  </>
+                  "Processing..."
                 ) : (
-                  <>
-                    <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                    Submit Request
-                  </>
+                  <span className="flex items-center gap-2">
+                    Submit Quote Request <ArrowRight className="w-4 h-4" />
+                  </span>
                 )}
               </Button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

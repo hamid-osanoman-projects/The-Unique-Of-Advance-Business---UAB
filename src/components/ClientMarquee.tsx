@@ -56,58 +56,73 @@ const clients = [
   { name: "Zublin Strabag", logo: zublin, isWhite: false },
 ];
 
+// Split clients for two different rows
+const firstRow = clients.slice(0, Math.ceil(clients.length / 2));
+const secondRow = clients.slice(Math.ceil(clients.length / 2));
+
+const MarqueeRow = ({ items, direction = "left" }: { items: typeof clients, direction?: "left" | "right" }) => {
+  return (
+    <div className="flex overflow-hidden select-none gap-6 py-4">
+      <motion.div
+        initial={{ x: direction === "left" ? 0 : "-50%" }}
+        animate={{ x: direction === "left" ? "-50%" : 0 }}
+        transition={{
+          duration: 40,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="flex flex-nowrap gap-6 min-w-full"
+      >
+        {/* Render the logos twice for seamless looping */}
+        {[...items, ...items].map((client, index) => (
+          <div
+            key={`${client.name}-${index}`}
+            className="flex-shrink-0 w-40 h-24 sm:w-48 sm:h-28 bg-[#FBFBFB] border border-slate-100 rounded-sm flex items-center justify-center p-6 group transition-all duration-500 hover:border-accent/30 hover:bg-white"
+          >
+            <img
+              src={client.logo}
+              alt={client.name}
+              className={`max-h-full max-w-full object-contain filter transition-all duration-500  group-hover:scale-110 
+                ${client.isWhite ? "brightness-0 opacity-80" : " opacity-70"}`}
+              style={{ maxHeight: "50px" }}
+            />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
 const ClientGrid = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4">
-        {/* Header Content */}
-        <AnimatedSection className="text-center mb-20">
-          <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em] mb-4 block">
-            Client Portfolio
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-6 uppercase leading-tight">
-            Our Valued <span className="text-accent">Clients</span>
-          </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
-        </AnimatedSection>
+    <section className="py-20 bg-white overflow-hidden border-t border-slate-100">
+      <div className="container mx-auto px-4 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-[2px] bg-accent" />
+              <span className="text-accent font-black text-[10px] uppercase tracking-[0.4em]">
+                Partnership Network
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-[#0A0F1C] uppercase tracking-tighter">
+              Trusted by Industry <span className="text-accent">Leaders</span>
+            </h2>
+          </div>
+          <p className="text-slate-500 font-medium text-sm md:text-base max-w-xs border-l-2 border-slate-100 pl-4">
+            Supporting the Sultanate's largest infrastructure and energy projects.
+          </p>
+        </div>
+      </div>
 
-        {/* Dynamic Staggered Grid */}
-        <StaggerContainer 
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6 max-w-7xl mx-auto"
-          staggerDelay={0.03}
-        >
-          {clients.map((client) => (
-            <StaggerItem key={client.name}>
-              <motion.div
-                whileHover={{ 
-                  y: -8,
-                  transition: { duration: 0.2 }
-                }}
-                className={`
-                  relative rounded-2xl p-4 h-28 flex items-center justify-center 
-                  shadow-sm hover:shadow-2xl transition-all duration-300 group cursor-default
-                  ${client.isWhite ? "bg-[#1A1A1A]" : "bg-[#F8F8F5] hover:bg-white"}
-                  border border-transparent hover:border-accent/20
-                `}
-              >
-                {/* Visual Accent on Hover */}
-                <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
-                
-                <img 
-                  src={client.logo} 
-                  alt={`${client.name} logo`} 
-                  className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110"
-                  style={{ maxHeight: '60px' }}
-                />
+      {/* Infinite Rows */}
+      <div className="relative">
+        {/* Gradient Fades for the edges */}
+        <div className="absolute inset-y-0 left-0 w-20 sm:w-40 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-20 sm:w-40 bg-gradient-to-l from-white to-transparent z-10" />
 
-                {/* Name Badge on Hover */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:bottom-2 transition-all duration-300 shadow-lg whitespace-nowrap z-20">
-                  {client.name}
-                </div>
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <MarqueeRow items={firstRow} direction="left" />
+        <MarqueeRow items={secondRow} direction="right" />
       </div>
     </section>
   );

@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import greenTankerImg from "../../assets/vehicles/greentanker1.jpeg";
+import TATATipper1 from "../../assets/vehicles/tatatipper1.jpeg";
+import bus1 from "../../assets/vehicles/bus1.jpeg";
+import { AnimatePresence } from "framer-motion";
 
 const categories = [
   { id: "all", label: "All" },
@@ -22,35 +27,42 @@ const galleryImages = [
   { 
     id: 2, 
     category: "buses", 
-    title: "Mitsubishi Rosa", 
+    title: "Mitsubishi", 
     description: "26-seater premium mini bus for executive site transfers", 
     image: "https://www.mitsubishi-fuso.com/wp-content/uploads/2019/07/Rosa.jpg" 
   },
+   {
+    id: 3,
+    category: "buses",
+    title : "TATA Bus",
+    description: "Modern staff transportation featuring wide aisles and comfortable seating. ",
+    image: bus1,
+    },
   { 
-    id: 3, 
+    id: 4, 
     category: "buses", 
-    title: "Ashok Leyland 66-Seater", 
+    title: "Ashok Leyland", 
     description: "High-capacity labor transportation for large-scale projects", 
     image: "https://wellcaretransport.com/wp-content/uploads/2025/04/Ashok-Leyland-66-Seater-2-1.webp" 
   },
 
   // HEAVY EQUIPMENT
   { 
-    id: 4, 
+    id: 5, 
     category: "equipment", 
-    title: "Hitachi ZX210 Excavator", 
+    title: "Hitachi Excavator", 
     description: "Heavy-duty crawler excavator for site preparation", 
     image: "https://hitachikenki.scene7.com/is/image/hitachikenki/ZX210-7-Working-1690-1" 
   },
   { 
-    id: 5, 
+    id: 6, 
     category: "equipment", 
-    title: "JCB 3DX Backhoe", 
+    title: "JCB", 
     description: "Versatile backhoe loader for trenching and utility work", 
     image: "https://images.tractorjunction.com/Infrajunction-prod/jcb_3dx_backhoe_loader1686911730_2b5e36e8a3.jpg?format=webp&quality=40" 
   },
   { 
-    id: 6, 
+    id: 7, 
     category: "equipment", 
     title: "Wheel Loader (Shawal)", 
     description: "Heavy-duty material handling at a quarry site", 
@@ -59,140 +71,127 @@ const galleryImages = [
 
   // TANKERS
   { 
-    id: 7, 
+    id: 8, 
     category: "tankers", 
     title: "Blue Water Tanker", 
     description: "Potable and utility water supply for construction sites", 
     image: "https://www.astra-trucks.com/en/wp-content/uploads/sites/3/2019/07/2019MiningFuelAndWaterTanks.jpg" 
   },
   { 
-    id: 8, 
+    id: 9, 
     category: "tankers", 
     title: "Green Water Tanker", 
     description: "Large capacity irrigation water supply for government projects", 
-    image: "https://api.thearabianpost.com/wp-content/uploads/2021/08/Water-tanker.jpg" 
+    image: greenTankerImg 
   },
 
   // TRUCKS & LOGISTICS
-  { 
-    id: 9, 
-    category: "trucks", 
-    title: "MAN TGS Tipper", 
-    description: "25-ton material transport truck for rugged terrain", 
-    image: "https://media.man.eu/is/image/MAN/man-lkw-etgs-teaser-1?wid=1600&hei=1200" 
-  },
+  // { 
+  //   id: 9, 
+  //   category: "trucks", 
+  //   title: "MAN TGS Tipper", 
+  //   description: "25-ton material transport truck for rugged terrain", 
+  //   image: "https://media.man.eu/is/image/MAN/man-lkw-etgs-teaser-1?wid=1600&hei=1200" 
+  // },
   { 
     id: 10, 
     category: "trucks", 
-    title: "TATA Signa Tipper", 
+    title: "TATA Tipper", 
     description: "High-performance logistics truck for infrastructure material", 
-    image: "https://trucks.tatamotors.com/assets/trucks/files/trucks/2024-02/sign-1923k-1.jpg" 
+    image: TATATipper1
   },
 
   // PROJECTS & FIELD WORK
-  { 
-    id: 11, 
-    category: "projects", 
-    title: "Site Operations", 
-    description: "UAB fleet supporting infrastructure development in Oman", 
-    image: "https://abunayyantrading.com/wp-content/uploads/2024/12/7341646718.jpg" 
-  },
-  { 
-    id: 12, 
-    category: "projects", 
-    title: "Workforce Logistics", 
-    description: "Coordinated staff mobilization for corporate clients", 
-    image: "https://www.constructionweekonline.com/cloud/2021/07/07/Cat980L-web.jpg" 
-  }
+  // { 
+  //   id: 11, 
+  //   category: "projects", 
+  //   title: "Site Operations", 
+  //   description: "UAB fleet supporting infrastructure development in Oman", 
+  //   image: "https://abunayyantrading.com/wp-content/uploads/2024/12/7341646718.jpg" 
+  // },
+  // { 
+  //   id: 12, 
+  //   category: "projects", 
+  //   title: "Workforce Logistics", 
+  //   description: "Coordinated staff mobilization for corporate clients", 
+  //   image: "https://www.constructionweekonline.com/cloud/2021/07/07/Cat980L-web.jpg" 
+  // }
 ];
 
 const GalleryGrid = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const filteredImages = activeCategory === "all" ? galleryImages : galleryImages.filter(img => img.category === activeCategory);
-
-  const openLightbox = (index: number) => { setCurrentImageIndex(index); setLightboxOpen(true); };
-  const closeLightbox = () => setLightboxOpen(false);
-  const goToPrevious = () => setCurrentImageIndex(prev => prev === 0 ? filteredImages.length - 1 : prev - 1);
-  const goToNext = () => setCurrentImageIndex(prev => prev === filteredImages.length - 1 ? 0 : prev + 1);
+  // 1. ADD THIS STATE: This keeps track of the clicked image
+  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
 
   return (
-    <section className="py-16 sm:py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 lg:mb-12">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 ${
-                activeCategory === category.id
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
-          {filteredImages.map((image, index) => (
-            <div
+    <section className="bg-[#F8FAFC] py-12">
+      <div className="container mx-auto px-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+          {galleryImages.map((image) => (
+            <motion.div
               key={image.id}
-              className="group relative rounded-xl sm:rounded-2xl overflow-hidden shadow-lg cursor-pointer transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-              onClick={() => openLightbox(index)}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              // 2. ADD THIS ONCLICK: Sets the clicked image to state
+              onClick={() => setSelectedImage(image)}
+              className="relative break-inside-avoid group cursor-pointer"
             >
-              <div className="aspect-[4/3]">
-                <img src={image.image} alt={image.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-bold text-primary-foreground mb-1">{image.title}</h3>
-                  <p className="text-xs sm:text-sm text-primary-foreground/80">{image.description}</p>
+              <div className="overflow-hidden rounded-[2rem] border-4 border-white shadow-md group-hover:shadow-xl transition-all duration-500">
+                <img 
+                  src={image.image} 
+                  alt={image.title} 
+                  className="w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-8">
+                  <p className="text-accent text-[10px] font-black uppercase tracking-[0.2em] mb-2">{image.category}</p>
+                  <h3 className="text-white text-lg font-black uppercase tracking-tight leading-tight">
+                    {image.title}
+                  </h3>
                 </div>
-                <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent rounded-full flex items-center justify-center">
-                    <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5 text-accent-foreground" />
-                  </div>
-                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-
-        {filteredImages.length === 0 && (
-          <div className="text-center py-16 sm:py-20">
-            <p className="text-muted-foreground text-base sm:text-lg">No images found in this category.</p>
-          </div>
-        )}
       </div>
 
-      {/* Lightbox */}
-      {lightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4">
-          <button onClick={closeLightbox} className="absolute top-4 sm:top-6 right-4 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10">
-            <X className="w-5 h-5 sm:w-6 sm:h-6" />
-          </button>
-          <button onClick={goToPrevious} className="absolute left-2 sm:left-6 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10">
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-          </button>
-          <button onClick={goToNext} className="absolute right-2 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors z-10">
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-          </button>
-          <div className="max-w-5xl mx-auto px-4 sm:px-12 lg:px-20">
-            <img src={filteredImages[currentImageIndex]?.image} alt={filteredImages[currentImageIndex]?.title} className="max-h-[60vh] sm:max-h-[80vh] w-auto mx-auto rounded-lg" />
-            <div className="text-center mt-4 sm:mt-6">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">{filteredImages[currentImageIndex]?.title}</h3>
-              <p className="text-white/70 text-sm sm:text-base">{filteredImages[currentImageIndex]?.description}</p>
-              <p className="text-white/50 text-xs sm:text-sm mt-3 sm:mt-4">{currentImageIndex + 1} / {filteredImages.length}</p>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* 3. ADD THE PREVIEW MODAL HERE */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-[#0A0F1C]/95 p-4"
+            onClick={() => setSelectedImage(null)} // Click outside to close
+          >
+            <motion.button 
+              className="absolute top-6 right-6 text-white hover:text-accent transition-colors"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-10 h-10" />
+            </motion.button>
+            
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="max-w-4xl w-full flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image
+            >
+              <img 
+                src={selectedImage.image} 
+                alt={selectedImage.title} 
+                className="rounded-[2rem] border-4 border-white max-h-[70vh] w-auto shadow-2xl"
+              />
+              <div className="mt-6 text-center">
+                <p className="text-accent text-xs font-black uppercase tracking-widest mb-2">{selectedImage.category}</p>
+                <h2 className="text-white text-3xl font-black uppercase tracking-tighter">{selectedImage.title}</h2>
+                <p className="text-slate-400 mt-2 max-w-md">{selectedImage.description}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

@@ -66,10 +66,10 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
               <Tag className="w-3 h-3" />
               {vehicle.category.charAt(0).toUpperCase() + vehicle.category.slice(1)}
             </span>
-            <span className="inline-flex items-center gap-1 bg-muted/50 px-2 py-1 rounded-md">
+            {/* <span className="inline-flex items-center gap-1 bg-muted/50 px-2 py-1 rounded-md">
               <Calendar className="w-3 h-3" />
               {vehicle.year}
-            </span>
+            </span> */}
           </div>
         </div>
       </motion.div>

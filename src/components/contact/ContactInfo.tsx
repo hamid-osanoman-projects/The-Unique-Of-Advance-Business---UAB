@@ -84,11 +84,11 @@ const ContactInfo = () => {
           ))}
         </div>
 
-        <div className="mt-4 pt-4 border-t border-border">
+        {/* <div className="mt-4 pt-4 border-t border-border">
           <p className="text-xs text-muted-foreground">
             <span className="font-semibold text-primary">24/7 Emergency:</span> +968 9999 8888
           </p>
-        </div>
+        </div> */}
       </div>
 
       {/* Office Address Card */}

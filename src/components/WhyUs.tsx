@@ -60,7 +60,7 @@ const WhyUs = () => {
               
               {/* Stats overlay */}
               <motion.div 
-                className="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 bg-primary text-primary-foreground rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl"
+                className="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 bg-[#0A0F1C] text-primary-foreground rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl"
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
@@ -77,13 +77,17 @@ const WhyUs = () => {
 
           {/* Right - Content */}
           <AnimatedSection direction="up" delay={0.3} className="order-1 lg:order-2">
-            {/* <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4 block">
-              Why Choose UAB
-            </span> */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 uppercase leading-tight">
-              Why Choose <span className="text-accent">Us</span> ?
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] bg-accent" />
+              <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em]">
+                Why Partner With Us
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0F1C] mb-8 leading-tight uppercase">
+              The Standard of <span className="text-accent">Reliability</span>
             </h2>
-            <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8 lg:mb-10 leading-relaxed">
+            <p className="text-muted-foreground text-base sm:text-md mb-6 sm:mb-8 lg:mb-10 leading-relaxed">
             With over 14 years of industry presence in the Sultanate and officially established since 2015, UAB has built a reputation for excellence through a robust fleet of 40+ specialized vehicles.
             </p>
 
@@ -105,7 +109,7 @@ const WhyUs = () => {
                         <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:text-primary-foreground transition-colors" />
                       </motion.div>
                       <div>
-                        <h4 className="text-foreground font-semibold text-base sm:text-lg mb-0.5 sm:mb-1 group-hover:text-primary transition-colors">
+                        <h4 className="text-foreground font-semibold text-base sm:text-md mb-0.5 sm:mb-1 group-hover:text-primary transition-colors">
                           {feature.title}
                         </h4>
                         <p className="text-muted-foreground text-xs sm:text-sm">

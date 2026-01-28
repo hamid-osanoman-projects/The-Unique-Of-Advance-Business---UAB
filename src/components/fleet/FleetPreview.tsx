@@ -12,7 +12,7 @@ const FleetPreview = () => {
   const featuredVehicles = getFeaturedVehicles().slice(0, 4);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-muted/30 relative overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-20 bg-muted/30 relative overflow-hidden">
       {/* Background decoration */}
       <motion.div
         className="absolute top-1/4 -right-20 w-[400px] h-[400px] rounded-full bg-accent/5 blur-3xl"
@@ -26,25 +26,28 @@ const FleetPreview = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <AnimatedSection className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 bg-accent/10 text-accent rounded-full px-3 sm:px-4 py-1.5 mb-4 sm:mb-6">
-            <Truck className="w-4 h-4" />
-            <span className="text-xs sm:text-sm font-medium uppercase tracking-wider">Our Fleet</span>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-8 h-[2px] bg-accent" />
+            <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em] block">
+              Our Fleet
+            </span>
+            <div className="w-8 h-[2px] bg-accent" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 uppercase leading-tight">
-          Professional <span className="text-[#F59F0A]">Transport Services</span>  in Oman
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A0F1C] mb-6 uppercase leading-tight tracking-tight">
+             Oman’s Premier <span className="text-accent">Transport Services</span>
           </h2>
 
           {/* <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-6 uppercase leading-tight">
             Professional <span className="text-[#F59F0A]">Transport Services</span> & Heavy Equipment in Oman
           </h2> */}
-          <p className="text-muted-foreground text-sm sm:text-base lg:text-lg">
-            Explore our well-maintained fleet of 30+ vehicles including luxury buses, 
-            heavy excavators, water tankers, and more, ready to serve across Oman.
+          <p className="text-muted-foreground text-sm sm:text-base lg:text-md ">
+            Explore our well-maintained vehicles, ready to serve across Oman.
           </p>
         </AnimatedSection>
 
         {/* Featured Vehicles Grid */}
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 mb-10 sm:mb-12">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 mb-2 sm:mb-4">
           {featuredVehicles.map((vehicle) => (
             <StaggerItem key={vehicle.id}>
               <VehicleCard vehicle={vehicle} />
@@ -53,7 +56,7 @@ const FleetPreview = () => {
         </StaggerContainer>
 
         {/* CTA */}
-        <AnimatedSection className="text-center">
+        {/* <AnimatedSection className="text-center">
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Link to="/fleet">
               <Button variant="accent" size="lg" className="btn-shimmer group">
@@ -62,7 +65,7 @@ const FleetPreview = () => {
               </Button>
             </Link>
           </motion.div>
-        </AnimatedSection>
+        </AnimatedSection> */}
       </div>
     </section>
   );

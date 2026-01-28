@@ -1,4 +1,5 @@
 import { Bus, Construction, Droplets, Truck } from "lucide-react";
+import greenwaterTankerImg from "../assets/vehicles/greentanker2.jpeg";
 
 export interface Testimonial {
   id: string;
@@ -26,205 +27,205 @@ export interface ServiceData {
 
 export const servicesData: ServiceData[] = [
   {
-    id: "corporate-transport",
-    title: "Corporate & Contract Bus Transportation",
-    shortDescription: "Reliable staff transportation for manpower supply companies, engineering firms, and corporate clients across Oman.",
-    detailedDescription: "The Unique of Advance Business (UAB) provides disciplined workforce mobility solutions. We operate a specialized fleet of heavy seater buses and coaster buses, ensuring punctuality and operational consistency. We cater specifically to companies requiring structured, long-term staff transport support with a focus on route discipline and passenger safety.",
+    id: "labor-transport",
+    title: "Worker & Staff Transport",
+    shortDescription: "Easy and reliable bus rentals for workers, office staff, and hotel teams across Oman.",
+    detailedDescription: "We provide daily bus services to move your team safely. Whether you need to pick up laborers for a construction site, transport hotel staff for shift changes, or move office employees, we have the right buses. You can rent our buses with a professional driver or manage them yourself.",
     icon: Bus,
     image: "https://i.pinimg.com/736x/e3/e8/a8/e3e8a8d6bd5f60dac8ce52c7166b1315.jpg",
     features: [
-      "Heavy Seater and Coaster Bus Fleet",
-      "Daily, Monthly, and Yearly Contract Options",
-      "Manpower & Labor Transportation Specialists",
-      "Route Discipline & Punctuality Monitoring",
-      "Licensed Drivers with Safety Certifications",
-      "GPS Fleet Tracking for Real-time Visibility",
-      "Air-conditioned & Well-maintained Vehicles",
-      "Customized Route Planning for Construction Sites"
+      "Rent with a Driver or without a Driver",
+      "Big buses (66-seater) and Mini buses (Coasters)",
+      "Daily, Monthly, or Yearly rentals",
+      "Hotel Staff shift timing specialists",
+      "Perfect for Construction & Engineering teams",
+      "All buses have strong Air Conditioning (AC)",
+      "GPS tracking to see where the bus is",
+      "Clean and well-maintained seats"
     ],
     benefits: [
-      "Ensure workforce arrives on-site on schedule",
-      "Cost-effective monthly contract pricing",
-      "Reduced administrative burden for manpower firms",
-      "Enhanced safety for labor and staff transport",
-      "Reliable service even for remote site locations",
-      "Scalable fleet based on project workforce size"
+      "Your team always arrives on time",
+      "Cheaper monthly rates for long contracts",
+      "We handle the driving so you don't have to",
+      "Safe and comfortable travel for workers",
+      "Available for remote areas and oil sites",
+      "Easy to add more buses if your team grows"
     ],
     useCases: [
-      "Manpower supply company daily commutes",
-      "Engineering firm site-to-camp transport",
-      "Industrial plant shift rotations",
-      "School and Educational institution transport",
-      "Corporate office staff shuttle programs",
-      "Remote oil & gas site logistics"
+      "Construction worker daily transport",
+      "Hotel staff shift pickups and drops",
+      "Office staff morning/evening shuttle",
+      "School and college student trips",
+      "Airport transfers for large groups",
+      "Factory and industrial shift changes"
     ],
     technologies: [
-      "GPS Real-time Tracking",
-      "Route Optimization Software",
-      "Driver Behavior Monitoring",
-      "Digital Trip Logging"
+      "Live Map Tracking",
+      "Smart Route Planning",
+      "Safe Driving Alerts",
+      "Digital Time Logs"
     ],
-    ctaText: "Request Transport Quote",
+    ctaText: "Get a Bus Rental Quote",
     testimonials: [
       {
         id: "ct-1",
         name: "Ahmed Al-Balushi",
         role: "Logistics Manager",
         company: "Al-Haditha Engineering",
-        content: "UAB has revolutionized our site transport. Their buses are always on time, which is critical for our engineering project timelines in Duqm.",
+        content: "UAB makes moving our workers very easy. Their buses are always on time, and the drivers are very professional.",
         rating: 5
       }
     ]
   },
   {
     id: "water-tanker",
-    title: "Water Tanker Supply Services",
-    shortDescription: "Professional supply of Green and Blue water tankers for commercial, industrial, and government irrigation projects.",
-    detailedDescription: "UAB provides reliable water tanker services in Oman for operational and industrial use. Our fleet includes specialized Green and Blue water tankers, suitable for both construction site support and government irrigation projects. We ensure consistent supply and timely delivery through structured daily or monthly contracts.",
+    title: "Water Tanker Delivery",
+    shortDescription: "Fast water delivery for building sites, gardens, and industrial use using our tanker fleet.",
+    detailedDescription: "Need water for your project? We supply Green and Blue water tankers for any need. We help with water for construction work, watering plants for government projects, or filling tanks at labor camps. Available for one-time delivery or monthly supply, with or without our drivers.",
     icon: Droplets,
-    image: "https://cdn.ironpla.net/i/1938/278/1938278_3945_159_0001-hr.jpg",
+    image: greenwaterTankerImg,
     features: [
-      "Green & Blue Water Tankers available",
-      "Daily, Monthly, and Long-term supply contracts",
-      "Specialized Government Irrigation Support",
-      "Multiple capacities (5,000 to 20,000 Liters)",
-      "Scheduled recurring delivery options",
-      "24/7 Emergency water supply availability",
-      "Experienced drivers for site-specific delivery",
-      "Clean and well-maintained tanker fleet"
+      "Available with Driver or without Driver",
+      "Green Tankers for plants/irrigation",
+      "Blue Tankers for construction/cleaning",
+      "Sizes from 5,000 to 20,000 Liters",
+      "Daily and Monthly supply plans",
+      "Emergency water delivery (24/7)",
+      "Experienced drivers who know site safety",
+      "Clean tanks for better water quality"
     ],
     benefits: [
-      // "Uninterrupted water supply for site operations",
-      "Compliant with industrial and operational standards",
-      "Flexible contracts tailored to project duration",
-      "Reliable delivery to remote desert locations",
-      "Cost-optimized water logistics",
-      "Professional handling and site safety compliance"
+      "Never run out of water on your site",
+      "Simple contracts for long projects",
+      "We deliver to desert and remote locations",
+      "Best prices for monthly water supply",
+      "No hidden costs",
+      "Reliable and fast service"
     ],
     useCases: [
-      "Government landscaping and irrigation",
-      "Construction site dust control and mixing",
-      "Industrial manufacturing cooling water",
-      "Labor camp utility water supply",
-      "Emergency backup for residential communities",
-      "Commercial building maintenance water"
+      "Watering garden and roadside plants",
+      "Construction site dust control",
+      "Mixing concrete and site cleaning",
+      "Filling water tanks at labor camps",
+      "Swimming pool filling",
+      "Industrial cooling and factory use"
     ],
     technologies: [
-      "Tanker Level Monitoring",
+      "Water Level Sensors",
       "GPS Delivery Tracking",
-      "Automated Scheduling",
-      "Quality Assurance Checks"
+      "Easy Scheduling",
+      "Quality Checks"
     ],
-    ctaText: "Book Water Tanker",
+    ctaText: "Order a Water Tanker",
     testimonials: [
       {
         id: "wt-1",
         name: "Said Al-Kindi",
         role: "Project Coordinator",
         company: "Oman Infrastructure Group",
-        content: "The reliability of UAB's water supply, especially their specialized green tankers for our irrigation projects, has been outstanding.",
+        content: "Very reliable water service. Their green tankers are perfect for our landscaping projects.",
         rating: 5
       }
     ]
   },
   {
     id: "heavy-equipment",
-    title: "Heavy Equipment Services",
-    shortDescription: "Professional earthmoving and material handling solutions featuring Excavators and Wheel Loaders.",
-    detailedDescription: "Our heavy equipment division provides the machinery necessary for earthmoving, material handling, and site preparation across Oman. Featuring high-performance Excavators and Wheel Loaders, we deliver operational discipline alongside trained operators to ensure your construction or industrial project stays on track.",
+    title: "Excavators & Heavy Machines",
+    shortDescription: "Powerful digging and lifting machines like Excavators and Loaders for your project.",
+    detailedDescription: "Rent the best heavy machines for digging, moving soil, and clearing land. We provide high-quality Excavators and Wheel Loaders (Shawal) that are ready to work. You can rent the machine alone or with our expert operators to do the work for you.",
     icon: Construction,
     image: "https://i.pinimg.com/1200x/23/6f/a1/236fa1ef7abcba3553c7a16e7adad16e.jpg",
     features: [
-      "High-performance Excavators & Wheel Loaders",
-      "Trained and Certified Equipment Operators",
-      "Daily, Weekly, and Monthly Rental Periods",
-      "Earthmoving and Site Preparation Specialists",
-      "On-site Maintenance and Technical Support",
-      "Equipment Mobilization to any Oman Governorate",
-      "Rigorous Safety and Performance Inspections",
-      "Material Handling Expertise"
+      "Rent with Operator or without Operator",
+      "Modern Excavators and Wheel Loaders",
+      "Rent by Day, Week, or Month",
+      "Expert at digging and land clearing",
+      "Free on-site mechanical support",
+      "We deliver the machine to your location",
+      "Regular safety checks on all machines",
+      "Heavy-duty performance"
     ],
     benefits: [
-      "Reduce project downtime with reliable machinery",
-      "Avoid high capital expenditure on equipment",
-      "Access to skilled and safety-trained operators",
-      "Scalable equipment fleet for large-scale sites",
-      "Guaranteed performance in harsh Omani terrain",
-      "Transparent and competitive rental rates"
+      "Get work done faster with strong machines",
+      "No need to buy expensive equipment",
+      "Skilled operators save you time",
+      "Machines work perfectly in hot weather",
+      "Very competitive rental rates",
+      "Flexible rental times"
     ],
     useCases: [
-      "Building and Infrastructure Excavation",
-      "Industrial Site Clearing and Levelling",
-      "Quarry and Mining Material Handling",
-      "Road Construction and Earthworks",
-      "Agricultural Land Preparation",
-      "Pipeline Trenching and Backfilling"
+      "Digging for building foundations",
+      "Levelling and clearing project land",
+      "Moving rocks and sand in quarries",
+      "Road and highway construction",
+      "Digging trenches for pipes",
+      "Farm and land preparation"
     ],
     technologies: [
-      "Telematics Monitoring",
-      "Safety Alert Systems",
-      "Fuel Efficiency Tracking",
-      "Load Sensing Technology"
+      "Machine Health Tracking",
+      "Safety Sensors",
+      "Fuel Saving Mode",
+      "Weight Lifting Sensors"
     ],
-    ctaText: "Get Equipment Quote",
+    ctaText: "Get an Equipment Price",
     testimonials: [
       {
         id: "he-1",
         name: "Khalid Al-Rashdi",
         role: "Senior Engineer",
         company: "Galfar Engineering",
-        content: "UAB provides top-tier excavators with operators who truly understand site discipline. They are a vital part of our earthmoving operations.",
+        content: "Good quality excavators. The operators are very skilled and follow all site safety rules.",
         rating: 5
       }
     ]
   },
   {
-    id: "tipper-logistics",
-    title: "Tipper & Material Transportation",
-    shortDescription: "Disciplined material logistics for sand, aggregates, and construction materials across Oman.",
-    detailedDescription: "UAB supports Oman’s infrastructure development with a fleet of high-capacity tippers. We specialize in the transportation of sand, aggregates, and other construction materials, providing disciplined logistics aligned with strict site requirements and project timelines.",
+    id: "tipper-transport",
+    title: "Sand & Material Transport",
+    shortDescription: "Truck services to move sand, stones, and construction materials to your site.",
+    detailedDescription: "Our tipper trucks help you move heavy materials easily. If you need to transport sand, stones (aggregate), or clear waste from a construction site, we have the trucks ready. Available for project-based work with or without our drivers.",
     icon: Truck,
     image: "https://i.pinimg.com/736x/f7/9d/57/f79d57f4202594948ab73f7920072702.jpg",
     features: [
-      "High-capacity Tipper Fleet",
-      "Monthly and Project-based Contracts",
-      "Construction Material Logistics Specialist",
-      "Disciplined Site Operations Alignment",
-      "Sand, Aggregate, and Debris Transport",
-      "GPS Tracked Logistics Movement",
-      "Safety-compliant Transport Fleet",
-      "Timely Deliveries for Infrastructure Projects"
+      "Available with Driver or without Driver",
+      "Big trucks for heavy loads",
+      "Sand and Stone delivery",
+      "Removal of construction waste",
+      "Monthly or per-trip contracts",
+      "GPS tracking for every load",
+      "Safe and strong truck fleet",
+      "On-time delivery guaranteed"
     ],
     benefits: [
-      "Reliable material supply chain for construction",
-      "Minimized site delays with punctual delivery",
-      "Transparent tracking of material movement",
-      "Safety-first approach to heavy logistics",
-      "Competitive project-based contract rates",
-      "Experienced drivers for challenging site terrain"
+      "Keep your materials moving on time",
+      "Fewer delays on your construction site",
+      "Know exactly where your materials are",
+      "Cheaper rates for big projects",
+      "Expert drivers for off-road sites",
+      "Clean and professional service"
     ],
     useCases: [
-      "Infrastructure and Highway construction",
-      "Large-scale Residential Developments",
-      "Industrial site material replenishment",
-      "Waste and Debris removal from sites",
-      "Quarry to Site material hauling",
-      "Oil and Gas site support logistics"
+      "Moving sand for road building",
+      "Supplying stones for foundations",
+      "Cleaning up site debris and waste",
+      "Transporting materials from quarries",
+      "Industrial material moving",
+      "Large housing project logistics"
     ],
     technologies: [
-      "Real-time Fleet Tracking",
-      "Load Optimization Systems",
-      "Route Management Software",
-      "Electronic Trip Documentation"
+      "Live Truck Tracking",
+      "Load Weight Monitoring",
+      "Best Route Planning",
+      "Digital Delivery Notes"
     ],
-    ctaText: "Get Logistics Quote",
+    ctaText: "Get a Trucking Quote",
     testimonials: [
       {
         id: "lg-1",
         name: "Abdullah Al-Shukaili",
         role: "Procurement Manager",
         company: "Muscat Municipality Contractor",
-        content: "Their tipper services are consistently reliable. We rely on UAB for all our aggregate transportation needs because of their operational discipline.",
+        content: "Best tipper service in Oman. They always deliver our sand and stones on time.",
         rating: 5
       }
     ]

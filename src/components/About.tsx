@@ -50,7 +50,7 @@ const About = () => {
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
                     <motion.div 
-                      className="w-12 sm:w-14 h-12 sm:h-14 bg-primary rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0"
+                      className="w-12 sm:w-14 h-12 sm:h-14 bg-[#0A0F1C] rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0"
                       whileHover={{ rotate: 10 }}
                     >
                       <span className="text-primary-foreground font-bold text-lg sm:text-xl">14+</span>
@@ -76,14 +76,17 @@ const About = () => {
 
           {/* Right - Content */}
           <AnimatedSection direction="up" delay={0.3}>
-            <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4 block">
-              About UAB
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 leading-tight uppercase ">
-              Trusted Transport Solutions in{" "}
-              <span className="text-accent">Oman</span>
-            </h2>
-            <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] bg-accent" />
+              <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.3em]">
+                Discover Our Story
+              </span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0A0F1C] mb-8 leading-tight uppercase">
+  Oman’s Premier <span className="text-accent ">Logistics Partner</span>
+</h2>
+            <p className="text-muted-foreground text-base sm:text-md mb-6 sm:mb-8 leading-relaxed text-justify">
             The Unique of Advance Business (UAB) has been a driving force in Oman’s logistics sector since its initial foundations in 2010, officially registering and expanding operations in 2015. Over the past decade, we have evolved into a premier provider of industrial staff transportation, water logistics, and heavy equipment rentals.
             </p>
 
@@ -112,7 +115,7 @@ const About = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Button variant="default" size="lg" className="w-full sm:w-auto btn-shimmer group">
+              <Button variant="default" size="lg" className="w-full sm:w-auto btn-shimmer group bg-[#0A0F1C]">
                 Read More
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
