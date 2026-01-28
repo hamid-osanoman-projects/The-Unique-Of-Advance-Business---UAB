@@ -18,7 +18,7 @@ import iacovou from "../assets/logos/iacovou_logo.png";
 import royaltech from "../assets/logos/royaltech.png";
 import gds from "../assets/logos/gds-450-white.png";
 import burj from "../assets/logos/burj-logo-lg.png";
-import oneic from "../assets/logos/oneiclogo.png";
+import oneic from "../assets/logos/oneic.png";
 import ikk from "../assets/logos/ikk-group-logo.png";
 import islamkairi from "../assets/logos/islamkairi-kabbani-group-logo.png";
 import jalmood from "../assets/logos/jalmood_logo.jpg";

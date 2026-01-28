@@ -20,7 +20,7 @@ import gds from "../../assets/logos/gds-450-white.png";
 
 import moukhtar from "../../assets/logos/moukhtar-logo.gif";
 import novatel from "../../assets/logos/novatel-logo.jpeg";
-import oneic from "../../assets/logos/oneiclogo.png";
+import oneic from "../../assets/logos/oneic.png";
 import opi from "../../assets/logos/opi_logo.avif";
 import royaltech from "../../assets/logos/royaltech.png";
 import ryboa from "../../assets/logos/ryboahaima-logo.png";
