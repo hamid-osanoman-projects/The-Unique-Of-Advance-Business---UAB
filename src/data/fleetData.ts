@@ -1,5 +1,5 @@
 import greentanker1 from "../assets/vehicles/greentanker2.jpeg";
-import tatatipper1 from "../assets/vehicles/tatatipper1.jpeg";
+import tatatipper1 from "../assets/vehicles/tatatipper.jpeg";
 import bus1 from "../assets/vehicles/bus1.jpeg";
 
 export interface Vehicle {
