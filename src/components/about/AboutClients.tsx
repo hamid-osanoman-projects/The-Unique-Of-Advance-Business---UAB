@@ -45,7 +45,7 @@ import target from "../../assets/logos/target-logo.png";
 import tls from "../../assets/logos/tls-logo.png";
 import tradekey from "../../assets/logos/tradekey-logo.svg";
 import uep from "../../assets/logos/uep-logo.jpg";
-import wcn from "../../assets/logos/wcn-logo.jpg";
+import wcn from "../../assets/logos/wcn.jpg";
 
 
 
