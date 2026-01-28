@@ -11,7 +11,7 @@ import galfar from "../../assets/logos/galfar-logo.png";
 import masirah from "../../assets/logos/masirah-logo.png";
 import gps from "../../assets/logos/gps-logo.png";
 import iacovou from "../../assets/logos/iacovou_logo.png";
-import ikk from "../../assets/logos/ikk-group-logo.png";
+import ikk from "../../assets/logos/ikk-logo.png";
 import islamkairi from "../../assets/logos/islamkairi-kabbani-group-logo.png";
 import jalmood from "../../assets/logos/jalmood_logo.jpg";
 import keller from "../../assets/logos/keller-logo.svg";
