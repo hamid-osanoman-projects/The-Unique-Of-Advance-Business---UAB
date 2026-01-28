@@ -15,7 +15,7 @@ import keller from "../assets/logos/keller-logo.svg";
 import skyline from "../assets/logos/skyline.png";
 import zublin from "../assets/logos/zublin-logo.png";
 import iacovou from "../assets/logos/iacovou_logo.png";
-import royaltech from "../assets/logos/royaltech-logo.png";
+import royaltech from "../assets/logos/royaltech.png";
 import gds from "../assets/logos/gds-450-white.png";
 import burj from "../assets/logos/burj-logo-lg.png";
 import oneic from "../assets/logos/oneiclogo.png";

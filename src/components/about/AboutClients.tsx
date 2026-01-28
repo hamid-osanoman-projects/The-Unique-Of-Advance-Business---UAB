@@ -22,7 +22,7 @@ import moukhtar from "../../assets/logos/moukhtar-logo.gif";
 import novatel from "../../assets/logos/novatel-logo.jpeg";
 import oneic from "../../assets/logos/oneiclogo.png";
 import opi from "../../assets/logos/opi_logo.avif";
-import royaltech from "../../assets/logos/royaltech-logo.png";
+import royaltech from "../../assets/logos/royaltech.png";
 import ryboa from "../../assets/logos/ryboahaima-logo.png";
 import skyline from "../../assets/logos/skyline.png";
 import zublin from "../../assets/logos/zublin-logo.png";
